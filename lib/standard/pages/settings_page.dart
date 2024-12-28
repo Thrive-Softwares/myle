@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:myle/standard/components/theme_provider.dart';
+import 'package:myle/standard/pages/color_mode_page.dart';
+import 'package:myle/standard/pages/search_engine_option_page.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -44,24 +46,26 @@ Future<void> _launchUrlKofi() async {
 
           SizedBox(height: 10,),
 
-          Container(
-            decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.secondary,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                margin: const EdgeInsets.only(left: 25, right: 25),
-                padding: const EdgeInsets.all(16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Light Mode",
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => ColorModePage()));
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.secondary,
+                    borderRadius: BorderRadius.circular(12),
                   ),
-                Switch(
-                  value: Provider.of<ThemeProvider>(context, listen: false).isDarkMode, 
-                  onChanged: (value) => Provider.of<ThemeProvider>(context, listen: false).toggleTheme(),
-                  ),
-              ],
+                  margin: const EdgeInsets.only(left: 25, right: 25),
+                  padding: const EdgeInsets.all(16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Color Mode",
+                    ),
+                  Icon(Iconsax.arrow_right_3),
+                ],
+              ),
             ),
           ),
 
@@ -149,6 +153,31 @@ Future<void> _launchUrlKofi() async {
 
           GestureDetector(
             onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SearchEngineOptionPage()));
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.secondary,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  margin: const EdgeInsets.only(left: 25, right: 25),
+                  padding: const EdgeInsets.all(16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Search Engine",
+                    ),
+                  Icon(Iconsax.arrow_right_3),
+                ],
+              ),
+            ),
+          ),
+
+          SizedBox(height: 10,),
+
+          GestureDetector(
+            onTap: () {
               
             },
             child: Container(
@@ -162,7 +191,7 @@ Future<void> _launchUrlKofi() async {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Homepage",
+                    "Language | Coming Soon!",
                     ),
                   Icon(Iconsax.arrow_right_3),
                 ],

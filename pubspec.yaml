@@ -39,8 +39,10 @@ dependencies:
   provider: ^6.1.2
   iconsax: ^0.0.8
   url_launcher: ^6.3.1
+  shared_preferences: ^2.3.4
 
 dev_dependencies:
+  flutter_launcher_icons:
   flutter_test:
     sdk: flutter
 
@@ -50,6 +52,14 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^4.0.0
+
+flutter_launcher_icons:
+  remove_alpha_ios: true
+  android: true  
+  ios: true  
+  image_path: "lib/assets/myle_logo.png"  
+  adaptive_icon_background: "lib/assets/myle_logo.png"  
+  adaptive_icon_foreground: "lib/assets/myle_logo.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

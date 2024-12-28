@@ -21,3 +21,25 @@ ThemeData darkMode = ThemeData(
     inversePrimary: Colors.grey.shade300,
   ),
 );
+
+ThemeData blue = ThemeData(
+  brightness: Brightness.dark,
+  colorScheme: ColorScheme.dark(
+    surface: const Color.fromARGB(255, 9, 28, 51),
+    primary: const Color.fromARGB(255, 155, 178, 202),
+    secondary: const Color.fromARGB(255, 25, 48, 75),
+    tertiary: const Color.fromARGB(255, 55, 85, 117),
+    inversePrimary: const Color.fromARGB(255, 255, 255, 255),
+  ),
+);
+
+ThemeData forest = ThemeData(
+  brightness: Brightness.dark,
+  colorScheme: ColorScheme.dark(
+    surface: const Color.fromARGB(255, 19, 58, 45),
+    primary: const Color.fromARGB(255, 111, 151, 115),
+    secondary: const Color.fromARGB(255, 174, 104, 26),
+    tertiary: const Color.fromARGB(255, 249, 188, 17),
+    inversePrimary: const Color.fromARGB(255, 255, 255, 255),
+  ),
+);
