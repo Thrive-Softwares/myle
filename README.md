@@ -10,13 +10,13 @@ Myle is a Browser that has many customization options. Coming Soon!
 
 - Light/dark mode
 - Tabs
+- Change the corner radius to rounded (12px), round (99px) and rectengular (0px)
+- Change the search engine including Qwant, Google, Brave, duckduckgo, yahoo, bing and ecosia
 
 ## Coming Soon!!!
 
 - Change the Style including Cupertino, Material 3 Design, Nothing and Fluent 2
-- Change the search engine including Qwant, Google, Brave, duckduckgo and ecosia
 - Change the Navigationbar
-- Change the corner radius to rounded (12px), round (45px) and rectengular (0px)
 - Languages including German and Spanish
 
 
