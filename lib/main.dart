@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myle/material%203/components/theme_provider.dart';
-import 'package:myle/material%203/components/app_bar.dart';
+import 'package:myle/standard/components/theme_provider.dart';
+import 'package:myle/standard/components/app_bar.dart';
 import 'package:provider/provider.dart';
 
 void main() {

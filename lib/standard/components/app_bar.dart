@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:myle/material%203/components/browser_tab.dart';
-import 'package:myle/material%203/pages/settings_page.dart';
-import 'package:myle/material%203/pages/start_page.dart';
-import 'package:myle/material%203/pages/tabs_page.dart';
+import 'package:myle/standard/components/browser_tab.dart';
+import 'package:myle/standard/pages/settings_page.dart';
+import 'package:myle/standard/pages/start_page.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 enum SampleItem { itemOne, itemTwo, itemThree }
@@ -52,6 +51,7 @@ class _BrowserHomeState extends State<BrowserHome> {
   setState(() {
     tabs.add(newTab);
     currentTab = newTab;
+    isSearchBarFocused = false; // Reset focus when creating new tab
   });
 
   // Configure the controller after the tab is created
@@ -63,6 +63,7 @@ class _BrowserHomeState extends State<BrowserHome> {
           currentTab.isLoading = true;
           currentTab.url = url;
           showHomePage = false;
+          isSearchBarFocused = false; // Reset focus when navigation starts
         });
       },
       onPageFinished: (url) {
@@ -134,6 +135,7 @@ void _switchTab(BrowserTab tab) {
   setState(() {
     isSearchBarFocused = false;
   });
+  FocusScope.of(context).unfocus(); // Actively unfocus
 }
 
   Widget _buildSearchBar({bool floating = false}) {
@@ -177,7 +179,6 @@ void _switchTab(BrowserTab tab) {
     );
   }
 
-/*
   Widget _buildTabBar() {
   return Container(
     height: 40,
@@ -198,7 +199,7 @@ void _switchTab(BrowserTab tab) {
           onTap: () => _switchTab(tab),
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 8),
-            margin: const EdgeInsets.all(4),
+            margin: const EdgeInsets.only(left: 4, right: 4, top: 4, bottom: 4),
             decoration: BoxDecoration(
               color: tab == currentTab 
                 ? Theme.of(context).colorScheme.tertiary
@@ -235,7 +236,6 @@ void _switchTab(BrowserTab tab) {
     ),
   );
 }
-*/
 
   Widget _buildNavigationControls() {
   return Container(
@@ -246,35 +246,37 @@ void _switchTab(BrowserTab tab) {
       children: [
         IconButton(
           icon: const Icon(Iconsax.arrow_left_2),
-          onPressed: () => currentTab.controller.goBack(),
+          onPressed: () {
+            currentTab.controller.goBack();
+            setState(() {
+              isSearchBarFocused = false; // Reset focus when going back
+            });
+            FocusScope.of(context).unfocus(); // Actively unfocus
+          },
         ),
         IconButton(
           icon: const Icon(Iconsax.arrow_right_3),
-          onPressed: () => currentTab.controller.goForward(),
+          onPressed: () {
+            currentTab.controller.goForward();
+            setState(() {
+              isSearchBarFocused = false; // Reset focus when going forward
+            });
+            FocusScope.of(context).unfocus(); // Actively unfocus
+          },
         ),
         IconButton(
           icon: const Icon(Iconsax.home_2),
-          onPressed: () => setState(() => showHomePage = true),
+          onPressed: () {
+            setState(() {
+              showHomePage = true;
+              isSearchBarFocused = false; // Reset focus when going home
+            });
+            FocusScope.of(context).unfocus(); // Actively unfocus
+          },
         ),
         IconButton(
           icon: const Icon(Iconsax.add_square),
           onPressed: () => _createNewTab(),
-        ),
-        IconButton(
-          icon: const Icon(Iconsax.square),
-          onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => TabOverviewPage(
-          tabs: tabs,
-          currentTab: currentTab,
-          onTabSelected: (tab) => setState(() {
-            _switchTab(tab);
-          }),
-          onTabClosed: (tab) => setState(() {
-            _closeTab(tab);
-          }),
-          onNewTabPressed: _createNewTab,
-        ),));
-          },
         ),
         _buildMenuButton(),
       ],
@@ -337,34 +339,47 @@ void _switchTab(BrowserTab tab) {
 Widget build(BuildContext context) {
   return Scaffold(
     resizeToAvoidBottomInset: false,
-    body: Padding(
-      padding: const EdgeInsets.only(top: 50),
-      child: Stack(
-        children: [
-          if (showHomePage)
-            HomePage(onUrlSelected: loadUrl)
-          else
-            WebViewWidget(controller: currentTab.controller),
-          if (currentTab.isLoading)
-            const LinearProgressIndicator(),
-          if (isSearchBarFocused)
-            Positioned(
-              bottom: MediaQuery.of(context).viewInsets.bottom,
-              left: 0,
-              right: 0,
-              child: _buildSearchBar(floating: true),
-            ),
-        ],
+    body: GestureDetector( 
+      onTap: () {
+        // Unfocus the searchbar and update state
+        FocusScope.of(context).unfocus();
+        setState(() {
+          isSearchBarFocused = false;
+        });
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(top: 50),
+        child: Stack(
+          children: [
+            if (showHomePage)
+              HomePage(onUrlSelected: loadUrl)
+            else
+              WebViewWidget(controller: currentTab.controller),
+            if (currentTab.isLoading)
+              const LinearProgressIndicator(),
+            if (isSearchBarFocused)
+              Positioned(
+                bottom: MediaQuery.of(context).viewInsets.bottom -105,
+                left: 0,
+                right: 0,
+                child: Column(
+                  children: [
+                    _buildSearchBar(floating: true),
+                  ],
+                ),
+              ),
+          ],
+        ),
       ),
     ),
     bottomNavigationBar: Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        // _buildTabBar(),
+        _buildTabBar(),
         if (!isSearchBarFocused) _buildSearchBar(),
         _buildNavigationControls(),
       ],
     ),
   );
-}
+ }
 }
