@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:myle/material%203/components/theme_provider.dart';
+import 'package:myle/standard/components/theme_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -39,7 +39,7 @@ Future<void> _launchUrlKofi() async {
 
           SizedBox(height: 20,),
 
-          Text("Apperance"),
+          Text("Appearance"),
           Divider(endIndent: 45, indent: 45,),
 
           SizedBox(height: 10,),
@@ -204,8 +204,8 @@ Future<void> _launchUrlKofi() async {
           ),
           TextButton(
             onPressed: () {
-              _launchUrlRepo();
-            }, 
+                _launchUrlRepo();
+              },
             child: Text(
               "Git Repository", 
               style: TextStyle(
