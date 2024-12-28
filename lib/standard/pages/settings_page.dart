@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:myle/standard/components/corner_provider.dart';
 import 'package:myle/standard/components/theme_provider.dart';
 import 'package:myle/standard/pages/color_mode_page.dart';
+import 'package:myle/standard/pages/corner_radius_page.dart';
 import 'package:myle/standard/pages/search_engine_option_page.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -53,7 +55,7 @@ Future<void> _launchUrlKofi() async {
             child: Container(
               decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.secondary,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
                   margin: const EdgeInsets.only(left: 25, right: 25),
                   padding: const EdgeInsets.all(16),
@@ -78,7 +80,7 @@ Future<void> _launchUrlKofi() async {
             child: Container(
               decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.secondary,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
                   margin: const EdgeInsets.only(left: 25, right: 25),
                   padding: const EdgeInsets.all(16),
@@ -103,7 +105,7 @@ Future<void> _launchUrlKofi() async {
             child: Container(
               decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.secondary,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
                   margin: const EdgeInsets.only(left: 25, right: 25),
                   padding: const EdgeInsets.all(16),
@@ -123,12 +125,12 @@ Future<void> _launchUrlKofi() async {
 
           GestureDetector(
             onTap: () {
-              
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CornerRadiusPage()));
             },
             child: Container(
               decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.secondary,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
                   margin: const EdgeInsets.only(left: 25, right: 25),
                   padding: const EdgeInsets.all(16),
@@ -158,7 +160,7 @@ Future<void> _launchUrlKofi() async {
             child: Container(
               decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.secondary,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
                   margin: const EdgeInsets.only(left: 25, right: 25),
                   padding: const EdgeInsets.all(16),
@@ -183,7 +185,7 @@ Future<void> _launchUrlKofi() async {
             child: Container(
               decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.secondary,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
                   margin: const EdgeInsets.only(left: 25, right: 25),
                   padding: const EdgeInsets.all(16),
@@ -208,7 +210,7 @@ Future<void> _launchUrlKofi() async {
             child: Container(
               decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.secondary,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
                   margin: const EdgeInsets.only(left: 25, right: 25),
                   padding: const EdgeInsets.all(16),

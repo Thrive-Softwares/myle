@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:myle/standard/components/corner_provider.dart';
 import 'package:myle/standard/components/theme_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -25,7 +26,7 @@ class _ColorModePageState extends State<ColorModePage> {
             child: Container(
               decoration: BoxDecoration(
                     color: Colors.black,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
                   margin: const EdgeInsets.only(left: 25, right: 25),
                   padding: const EdgeInsets.all(16),
@@ -53,7 +54,7 @@ class _ColorModePageState extends State<ColorModePage> {
             child: Container(
               decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
                   margin: const EdgeInsets.only(left: 25, right: 25),
                   padding: const EdgeInsets.all(16),
@@ -81,7 +82,7 @@ class _ColorModePageState extends State<ColorModePage> {
             child: Container(
               decoration: BoxDecoration(
                     color: Colors.blue[900],
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
                   margin: const EdgeInsets.only(left: 25, right: 25),
                   padding: const EdgeInsets.all(16),
@@ -108,8 +109,8 @@ class _ColorModePageState extends State<ColorModePage> {
             },
             child: Container(
               decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 111, 151, 115),
-                    borderRadius: BorderRadius.circular(12),
+                    color: Color.fromARGB(255, 174, 104, 26),
+                    borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
                   margin: const EdgeInsets.only(left: 25, right: 25),
                   padding: const EdgeInsets.all(16),
@@ -127,6 +128,45 @@ class _ColorModePageState extends State<ColorModePage> {
               ),
             ),
           ),
+
+          SizedBox(height: 10,),
+
+          GestureDetector(
+            onTap: () {
+              Provider.of<ThemeProvider>(context, listen: false).setTheme(ThemeType.cozy);
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 155, 124, 185),
+                    borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
+                  ),
+                  margin: const EdgeInsets.only(left: 25, right: 25),
+                  padding: const EdgeInsets.all(16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Violet",
+                    style: TextStyle(
+                      color: Colors.white
+                    ),
+                    ),
+                  Icon(Iconsax.color_swatch, color: Colors.white,),
+                ],
+              ),
+            ),
+          ),
+
+          SizedBox(height: 20,),
+
+          Text(
+            "More Colors to come...",
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.inversePrimary,
+              fontSize: 20,
+              fontWeight: FontWeight.w600
+            ),
+            ),
 
         ],
       ),

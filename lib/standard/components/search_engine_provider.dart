@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 enum SearchEngine {
   qwant,
@@ -11,12 +12,22 @@ enum SearchEngine {
 }
 
 class SearchEngineProvider extends ChangeNotifier {
+  static const String _engineKey = 'selected_engine';
+  late SharedPreferences _prefs;
   SearchEngine _currentEngine = SearchEngine.qwant;
 
-  SearchEngine get currentEngine => _currentEngine;
+  Future<void> initialize() async {
+    _prefs = await SharedPreferences.getInstance();
+    final savedEngineIndex = _prefs.getInt(_engineKey) ?? 0;
+    _currentEngine = SearchEngine.values[savedEngineIndex];
+    notifyListeners();
+  }
 
-  void setSearchEngine(SearchEngine engine) {
+  // Save theme when it changes
+  Future<void> setSearchEngine(SearchEngine engine) async {
     _currentEngine = engine;
+    // Save theme index to SharedPreferences
+    await _prefs.setInt(_engineKey, engine.index);
     notifyListeners();
   }
 

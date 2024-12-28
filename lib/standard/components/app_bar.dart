@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:myle/standard/components/browser_tab.dart';
+import 'package:myle/standard/components/corner_provider.dart';
 import 'package:myle/standard/components/search_engine_provider.dart';
 import 'package:myle/standard/pages/settings_page.dart';
 import 'package:myle/standard/pages/start_page.dart';
@@ -131,7 +132,7 @@ void _switchTab(BrowserTab tab) {
       currentTab.controller.loadRequest(uri);
     } else {
       final searchUrl = Provider.of<SearchEngineProvider>(context, listen: false)
-          .getSearchUrl(url);
+      .getSearchUrl(url);
       final uri = Uri.parse(searchUrl);
       currentTab.controller.loadRequest(uri);
     }
@@ -170,7 +171,7 @@ void _switchTab(BrowserTab tab) {
             filled: true,
             fillColor: Theme.of(context).colorScheme.tertiary,
             contentPadding: const EdgeInsets.only(top: 10, left: 15),
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),), borderSide: BorderSide.none),
             hintText: 'Begin your journey',
             suffixIcon: IconButton(
               icon: const Icon(Icons.search_rounded),
@@ -208,7 +209,7 @@ void _switchTab(BrowserTab tab) {
               color: tab == currentTab 
                 ? Theme.of(context).colorScheme.tertiary
                 : Theme.of(context).colorScheme.secondary,
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
