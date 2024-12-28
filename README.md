@@ -20,16 +20,6 @@ Myle is a Browser that has many customization options. Coming Soon!
 - Languages including German and Spanish
 
 
-## Latest Update!
-
-
-
-#### Full version 1.1
-
-The Latest Update was on the 12/06/2024 and it includes Notifications. When you want to know more about it here is the Link:
-https://github.com/ThriveEngineer/nothing.notes/releases/tag/v1.1
-
-
 ## Other stuff
 ### [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/L4L115XHM6)
 ### [Feedback🤚](https://tinted-seaplane-cb4.notion.site/12a93fc8858b8026820dd172dffdb309?pvs=105)
