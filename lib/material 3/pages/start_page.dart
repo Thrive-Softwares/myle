@@ -76,7 +76,7 @@ class _QuickAccessButton extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Colors.grey[200],
+          color: Theme.of(context).colorScheme.secondary,
         ),
         child: Column(
           children: [
