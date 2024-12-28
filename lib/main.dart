@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:myle/standard/components/search_engine_provider.dart';
 import 'package:myle/standard/components/theme_provider.dart';
 import 'package:myle/standard/components/app_bar.dart';
 import 'package:provider/provider.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => ThemeProvider(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => ThemeProvider(),
+      ),
+      ChangeNotifierProvider(create: (_) => SearchEngineProvider()),
+      ],
       child: const MyApp(),
-    )
+    ),
   );
 }
 

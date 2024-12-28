@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:myle/standard/components/browser_tab.dart';
+import 'package:myle/standard/components/search_engine_provider.dart';
 import 'package:myle/standard/pages/settings_page.dart';
 import 'package:myle/standard/pages/start_page.dart';
+import 'package:provider/provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 enum SampleItem { itemOne, itemTwo, itemThree }
@@ -128,14 +130,16 @@ void _switchTab(BrowserTab tab) {
       final uri = Uri.parse(url.startsWith('http') ? url : 'https://$url');
       currentTab.controller.loadRequest(uri);
     } else {
-      final uri = Uri.parse('https://www.qwant.com/?l=en&q=$url&t=web');
+      final searchUrl = Provider.of<SearchEngineProvider>(context, listen: false)
+          .getSearchUrl(url);
+      final uri = Uri.parse(searchUrl);
       currentTab.controller.loadRequest(uri);
     }
   }
   setState(() {
     isSearchBarFocused = false;
   });
-  FocusScope.of(context).unfocus(); // Actively unfocus
+  FocusScope.of(context).unfocus();
 }
 
   Widget _buildSearchBar({bool floating = false}) {
