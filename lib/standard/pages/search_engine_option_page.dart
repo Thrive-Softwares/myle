@@ -3,6 +3,8 @@ import 'package:myle/standard/components/corner_provider.dart';
 import 'package:myle/standard/components/search_engine_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:toasty_box/toast_enums.dart';
+import 'package:toasty_box/toast_service.dart';
 
 class SearchEngineOptionPage extends StatefulWidget {
   const SearchEngineOptionPage({super.key});
@@ -28,6 +30,23 @@ class _SearchEngineOptionPageState extends State<SearchEngineOptionPage> {
               GestureDetector(
             onTap: () {
               Provider.of<SearchEngineProvider>(context, listen: false).setSearchEngine(SearchEngine.qwant);
+              ToastService.showWidgetToast(
+                  context,
+                  isClosable: true,
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                  shadowColor: const Color.fromARGB(255, 117, 117, 117),
+                  length: ToastLength.medium,
+                  expandedHeight: 100,
+                  slideCurve: Curves.elasticInOut,
+                  positionCurve: Curves.bounceOut,
+                  dismissDirection: DismissDirection.none,
+                  child: Container(
+                  	color: Theme.of(context).colorScheme.secondary,
+                  	child: Center(
+                  		child: Text('You are now searching with Qwant', style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),),
+                  	),
+                  ),
+                );
             },
             child: Container(
               decoration: BoxDecoration(
@@ -56,6 +75,23 @@ class _SearchEngineOptionPageState extends State<SearchEngineOptionPage> {
               GestureDetector(
             onTap: () {
               Provider.of<SearchEngineProvider>(context, listen: false).setSearchEngine(SearchEngine.google);
+              ToastService.showWidgetToast(
+                  context,
+                  isClosable: true,
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                  shadowColor: const Color.fromARGB(255, 117, 117, 117),
+                  length: ToastLength.medium,
+                  expandedHeight: 100,
+                  slideCurve: Curves.elasticInOut,
+                  positionCurve: Curves.bounceOut,
+                  dismissDirection: DismissDirection.none,
+                  child: Container(
+                  	color: Theme.of(context).colorScheme.secondary,
+                  	child: Center(
+                  		child: Text('You are now searching with Google', style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),),
+                  	),
+                  ),
+                );
             },
             child: Container(
               decoration: BoxDecoration(
@@ -84,6 +120,23 @@ class _SearchEngineOptionPageState extends State<SearchEngineOptionPage> {
               GestureDetector(
             onTap: () {
               Provider.of<SearchEngineProvider>(context, listen: false).setSearchEngine(SearchEngine.duckduckgo);
+              ToastService.showWidgetToast(
+                  context,
+                  isClosable: true,
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                  shadowColor: const Color.fromARGB(255, 117, 117, 117),
+                  length: ToastLength.medium,
+                  expandedHeight: 100,
+                  slideCurve: Curves.elasticInOut,
+                  positionCurve: Curves.bounceOut,
+                  dismissDirection: DismissDirection.none,
+                  child: Container(
+                  	color: Theme.of(context).colorScheme.secondary,
+                  	child: Center(
+                  		child: Text('You are now searching with DuckDuckGo', style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),),
+                  	),
+                  ),
+                );
             },
             child: Container(
               decoration: BoxDecoration(
@@ -112,6 +165,23 @@ class _SearchEngineOptionPageState extends State<SearchEngineOptionPage> {
               GestureDetector(
             onTap: () {
               Provider.of<SearchEngineProvider>(context, listen: false).setSearchEngine(SearchEngine.ecosia);
+              ToastService.showWidgetToast(
+                  context,
+                  isClosable: true,
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                  shadowColor: const Color.fromARGB(255, 117, 117, 117),
+                  length: ToastLength.medium,
+                  expandedHeight: 100,
+                  slideCurve: Curves.elasticInOut,
+                  positionCurve: Curves.bounceOut,
+                  dismissDirection: DismissDirection.none,
+                  child: Container(
+                  	color: Theme.of(context).colorScheme.secondary,
+                  	child: Center(
+                  		child: Text('You are now searching with Ecosia', style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),),
+                  	),
+                  ),
+                );
             },
             child: Container(
               decoration: BoxDecoration(
@@ -140,6 +210,23 @@ class _SearchEngineOptionPageState extends State<SearchEngineOptionPage> {
               GestureDetector(
             onTap: () {
               Provider.of<SearchEngineProvider>(context, listen: false).setSearchEngine(SearchEngine.brave);
+              ToastService.showWidgetToast(
+                  context,
+                  isClosable: true,
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                  shadowColor: const Color.fromARGB(255, 117, 117, 117),
+                  length: ToastLength.medium,
+                  expandedHeight: 100,
+                  slideCurve: Curves.elasticInOut,
+                  positionCurve: Curves.bounceOut,
+                  dismissDirection: DismissDirection.none,
+                  child: Container(
+                  	color: Theme.of(context).colorScheme.secondary,
+                  	child: Center(
+                  		child: Text('You are now searching with Brave', style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),),
+                  	),
+                  ),
+                );
             },
             child: Container(
               decoration: BoxDecoration(
@@ -168,6 +255,23 @@ class _SearchEngineOptionPageState extends State<SearchEngineOptionPage> {
               GestureDetector(
             onTap: () {
               Provider.of<SearchEngineProvider>(context, listen: false).setSearchEngine(SearchEngine.yahoo);
+              ToastService.showWidgetToast(
+                  context,
+                  isClosable: true,
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                  shadowColor: const Color.fromARGB(255, 117, 117, 117),
+                  length: ToastLength.medium,
+                  expandedHeight: 100,
+                  slideCurve: Curves.elasticInOut,
+                  positionCurve: Curves.bounceOut,
+                  dismissDirection: DismissDirection.none,
+                  child: Container(
+                  	color: Theme.of(context).colorScheme.secondary,
+                  	child: Center(
+                  		child: Text('You are now searching with Yahoo', style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),),
+                  	),
+                  ),
+                );
             },
             child: Container(
               decoration: BoxDecoration(
@@ -196,6 +300,23 @@ class _SearchEngineOptionPageState extends State<SearchEngineOptionPage> {
               GestureDetector(
             onTap: () {
               Provider.of<SearchEngineProvider>(context, listen: false).setSearchEngine(SearchEngine.bing);
+              ToastService.showWidgetToast(
+                  context,
+                  isClosable: true,
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                  shadowColor: const Color.fromARGB(255, 117, 117, 117),
+                  length: ToastLength.medium,
+                  expandedHeight: 100,
+                  slideCurve: Curves.elasticInOut,
+                  positionCurve: Curves.bounceOut,
+                  dismissDirection: DismissDirection.none,
+                  child: Container(
+                  	color: Theme.of(context).colorScheme.secondary,
+                  	child: Center(
+                  		child: Text('You are now searching with Bing', style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),),
+                  	),
+                  ),
+                );
             },
             child: Container(
               decoration: BoxDecoration(

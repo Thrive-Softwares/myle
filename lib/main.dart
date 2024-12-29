@@ -11,14 +11,14 @@ void main() async {
   await themeProvider.initialize();
   final cornerProvider = CornerProvider();
   await cornerProvider.initialize();
+  final searchEngineProvider = SearchEngineProvider();
+  await searchEngineProvider.initialize();
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => themeProvider,
-      ),
-      ChangeNotifierProvider(create: (_) => SearchEngineProvider()),
-      ChangeNotifierProvider(create: (context) => cornerProvider,
-      ),
+        ChangeNotifierProvider(create: (context) => themeProvider,),
+      ChangeNotifierProvider(create: (context) => searchEngineProvider),
+      ChangeNotifierProvider(create: (context) => cornerProvider,),
       ],
       child: const MyApp(),
     ),
