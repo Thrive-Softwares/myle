@@ -49,4 +49,23 @@ class SearchEngineProvider extends ChangeNotifier {
         return 'https://www.bing.com/search?q=$query';
     }
   }
+
+  String getSearchUrlStart() {
+    switch (_currentEngine) {
+      case SearchEngine.qwant:
+        return 'https://www.qwant.com/';
+      case SearchEngine.google:
+        return 'https://www.google.com/';
+      case SearchEngine.duckduckgo:
+        return 'https://duckduckgo.com/';
+      case SearchEngine.ecosia:
+        return 'https://www.ecosia.org/';
+      case SearchEngine.brave:
+        return 'https://search.brave.com/';
+      case SearchEngine.yahoo:
+        return 'https://search.yahoo.com/';
+      case SearchEngine.bing:
+        return 'https://www.bing.com/';
+    }
+  }
 }

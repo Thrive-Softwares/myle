@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:myle/standard/components/search_engine_provider.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   final Function(String) onUrlSelected;
@@ -24,8 +26,8 @@ class HomePage extends StatelessWidget {
             children: [
               _QuickAccessButton(
                 icon: Icons.search_rounded,
-                label: 'Qwant',
-                url: 'https://www.qwant.com',
+                label: 'Search',
+                url: Provider.of<SearchEngineProvider>(context, listen: false).getSearchUrlStart(),
                 onTap: onUrlSelected,
               ),
               _QuickAccessButton(
