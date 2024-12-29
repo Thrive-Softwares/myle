@@ -1,8 +1,8 @@
 
 
-# Myle the Browser that adaptes to you.
+# Myle the Browser that adapts to you.
 
-![Image]()
+![Image](https://framerusercontent.com/images/Eacw9oeFmBymRaMuwJVmFbnapn4.png)
 
 Myle is a Browser that has many customization options. Coming Soon!
 
@@ -10,13 +10,13 @@ Myle is a Browser that has many customization options. Coming Soon!
 
 - Light/dark mode
 - Tabs
-- Change the corner radius to rounded (12px), round (99px) and rectengular (0px)
+- Change the corner radius to rounded (12px), round (99px) and rectangular (0px)
 - Change the search engine including Qwant, Google, Brave, duckduckgo, yahoo, bing and ecosia
 
 ## Coming Soon!!!
 
 - Change the Style including Cupertino, Material 3 Design, Nothing and Fluent 2
-- Change the Navigationbar
+- Change the Navigation bar
 - Languages including German and Spanish
 
 
