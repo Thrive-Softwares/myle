@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:myle/material%203%20design/pages/style_page.dart';
+import 'package:myle/fluent%202/pages/style_page.dart';
 import 'package:myle/standard/components/corner_provider.dart';
-import 'package:myle/material 3 design/pages/color_mode_page.dart';
-import 'package:myle/material 3 design/pages/corner_radius_page.dart';
-import 'package:myle/material 3 design/pages/search_engine_option_page.dart';
+import 'package:myle/fluent 2/pages/color_mode_page.dart';
+import 'package:myle/fluent 2/pages/corner_radius_page.dart';
+import 'package:myle/fluent 2/pages/search_engine_option_page.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -74,7 +74,7 @@ Future<void> _launchUrlKofi() async {
           
           GestureDetector(
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => StylePage()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const StylePage()));
             },
             child: Container(
               decoration: BoxDecoration(

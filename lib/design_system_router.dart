@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:myle/fluent%202/components/app_bar_fluent.dart';
 import 'package:myle/material%203%20design/components/app_bar_material.dart';
+import 'package:myle/nothing/components/app_bar_nothing.dart';
 import 'package:myle/standard/components/app_bar_standard.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -23,23 +25,23 @@ class StyleProvider extends ChangeNotifier {
   }
 
   // Save theme when it changes
-  Future<void> setCornerRadius(Style style) async {
+  Future<void> setStyle(Style style) async {
     _currentStyle = style;
     // Save theme index to SharedPreferences
     await _prefs.setInt(_styleKey, style.index);
     notifyListeners();
   }
 
-  Object getCornerRadius() {
+  Widget getStyle() {
     switch (_currentStyle) {
       case Style.standard:
         return BrowserHomeStandard();
       case Style.material:
         return BrowserHomeMaterial();
       case Style.nothing:
-        return 99;
+        return BrowserHomeNothing();
       case Style.fluent:
-        return 8;
+        return BrowserHomeFluent();
     }
   }
 }
