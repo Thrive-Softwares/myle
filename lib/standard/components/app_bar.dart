@@ -6,6 +6,7 @@ import 'package:myle/standard/components/search_engine_provider.dart';
 import 'package:myle/standard/pages/settings_page.dart';
 import 'package:myle/standard/pages/start_page.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 enum SampleItem { itemOne, itemTwo, itemThree }
@@ -38,6 +39,11 @@ class _BrowserHomeState extends State<BrowserHome> {
   void dispose() {
     urlController.dispose();
     super.dispose();
+  }
+
+  void sharePressed() {
+    String link = currentTab.url;
+      Share.share(link);
   }
 
   void _createNewTab() {
@@ -326,15 +332,18 @@ void _switchTab(BrowserTab tab) {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SettingsPage()));
           },
         ),
-        const PopupMenuItem<SampleItem>(
+        PopupMenuItem<SampleItem>(
           value: SampleItem.itemThree,
-          child: Row(
+          child: const Row(
             children: [
               Icon(Iconsax.share),
               SizedBox(width: 10),
               Text('Share'),
             ],
           ),
+          onTap: () {
+            sharePressed();
+            }
         ),
       ],
     );

@@ -20,6 +20,8 @@ class _CornerRadiusPageState extends State<CornerRadiusPage> {
       body: Center(
         child: Column(
           children: [
+
+            SizedBox(height: 20,),
         
             GestureDetector(
               onTap: () {
@@ -48,7 +50,7 @@ class _CornerRadiusPageState extends State<CornerRadiusPage> {
                       borderRadius: BorderRadius.circular(0),
                     ),
                     margin: const EdgeInsets.only(left: 25, right: 25),
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.only(top: 16, bottom: 16, left: 100, right: 100),
                 child: Text(
                       "Rectangle",
                       style: TextStyle(
@@ -58,7 +60,7 @@ class _CornerRadiusPageState extends State<CornerRadiusPage> {
               ),
             ),
         
-            SizedBox(height: 10,),
+            SizedBox(height: 20,),
         
             GestureDetector(
               onTap: () {
@@ -87,7 +89,7 @@ class _CornerRadiusPageState extends State<CornerRadiusPage> {
                       borderRadius: BorderRadius.circular(16),
                     ),
                     margin: const EdgeInsets.only(left: 25, right: 25),
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.only(top: 16, bottom: 16, left: 100, right: 100),
                 child: Text(
                       "Rounded",
                       style: TextStyle(
@@ -97,7 +99,7 @@ class _CornerRadiusPageState extends State<CornerRadiusPage> {
               ),
             ),
         
-            SizedBox(height: 10,),
+            SizedBox(height: 20,),
         
             GestureDetector(
               onTap: () {
@@ -126,7 +128,7 @@ class _CornerRadiusPageState extends State<CornerRadiusPage> {
                       borderRadius: BorderRadius.circular(99),
                     ),
                     margin: const EdgeInsets.only(left: 25, right: 25),
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.only(top: 16, bottom: 16, left: 100, right: 100),
                 child: Text(
                       "Round",
                       style: TextStyle(

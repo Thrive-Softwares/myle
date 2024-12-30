@@ -19,6 +19,8 @@ class _ColorModePageState extends State<ColorModePage> {
       body: Column(
         children: [
 
+          SizedBox(height: 20,),
+
           GestureDetector(
             onTap: () {
               Provider.of<ThemeProvider>(context, listen: false).setTheme(ThemeType.dark);
