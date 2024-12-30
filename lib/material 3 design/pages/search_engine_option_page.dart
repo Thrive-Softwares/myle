@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myle/standard/components/corner_provider.dart';
 import 'package:myle/standard/components/search_engine_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:toasty_box/toast_enums.dart';
 import 'package:toasty_box/toast_service.dart';
 

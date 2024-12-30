@@ -41,7 +41,7 @@ class _ColorModePageState extends State<ColorModePage> {
                       color: Colors.white
                     ),
                     ),
-                  Icon(Iconsax.color_swatch, color: Colors.white,),
+                  Icon(Icons.color_lens_rounded, color: Colors.white,),
                 ],
               ),
             ),
@@ -69,7 +69,7 @@ class _ColorModePageState extends State<ColorModePage> {
                       color: Colors.black
                     ),
                     ),
-                  Icon(Iconsax.color_swatch, color: Colors.black,),
+                  Icon(Icons.color_lens_rounded, color: Colors.black,),
                 ],
               ),
             ),
@@ -97,7 +97,7 @@ class _ColorModePageState extends State<ColorModePage> {
                       color: Colors.white
                     ),
                     ),
-                  Icon(Iconsax.color_swatch, color: Colors.white,),
+                  Icon(Icons.color_lens_rounded, color: Colors.white,),
                 ],
               ),
             ),
@@ -125,7 +125,7 @@ class _ColorModePageState extends State<ColorModePage> {
                       color: Colors.white
                     ),
                     ),
-                  Icon(Iconsax.color_swatch, color: Colors.white,),
+                  Icon(Icons.color_lens_rounded, color: Colors.white,),
                 ],
               ),
             ),
@@ -153,7 +153,7 @@ class _ColorModePageState extends State<ColorModePage> {
                       color: Colors.white
                     ),
                     ),
-                  Icon(Iconsax.color_swatch, color: Colors.white,),
+                  Icon(Icons.color_lens_rounded, color: Colors.white,),
                 ],
               ),
             ),

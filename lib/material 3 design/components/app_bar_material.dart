@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:myle/standard/components/browser_tab.dart';
 import 'package:myle/standard/components/corner_provider.dart';
 import 'package:myle/standard/components/search_engine_provider.dart';
-import 'package:myle/standard/pages/settings_page.dart';
-import 'package:myle/standard/pages/start_page.dart';
+import 'package:myle/material 3 design/pages/settings_page.dart';
+import 'package:myle/material 3 design/pages/start_page.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 enum SampleItem { itemOne, itemTwo, itemThree }
 
-class BrowserHome extends StatefulWidget {
-  const BrowserHome({super.key});
+class BrowserHomeMaterial extends StatefulWidget {
+  const BrowserHomeMaterial({super.key});
 
   @override
-  State<BrowserHome> createState() => _BrowserHomeState();
+  State<BrowserHomeMaterial> createState() => _BrowserHomeMaterialState();
 }
 
-class _BrowserHomeState extends State<BrowserHome> {
+class _BrowserHomeMaterialState extends State<BrowserHomeMaterial> {
   SampleItem? selectedItem;
   late WebViewController controller;
   List<BrowserTab> tabs = [];
@@ -38,6 +38,11 @@ class _BrowserHomeState extends State<BrowserHome> {
   void dispose() {
     urlController.dispose();
     super.dispose();
+  }
+
+  void sharePressed() {
+    String link = currentTab.url;
+      Share.share(link);
   }
 
   void _createNewTab() {
@@ -194,7 +199,7 @@ void _switchTab(BrowserTab tab) {
       itemBuilder: (context, index) {
         if (index == tabs.length) {
           return IconButton(
-            icon: const Icon(Iconsax.add_square),
+            icon: const Icon(Icons.add_box_rounded),
             onPressed: _createNewTab,
           );
         }
@@ -250,7 +255,7 @@ void _switchTab(BrowserTab tab) {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         IconButton(
-          icon: const Icon(Iconsax.arrow_left_2),
+          icon: const Icon(Icons.arrow_back_ios_rounded),
           onPressed: () {
             currentTab.controller.goBack();
             setState(() {
@@ -260,7 +265,7 @@ void _switchTab(BrowserTab tab) {
           },
         ),
         IconButton(
-          icon: const Icon(Iconsax.arrow_right_3),
+          icon: const Icon(Icons.arrow_forward_ios_rounded),
           onPressed: () {
             currentTab.controller.goForward();
             setState(() {
@@ -270,7 +275,7 @@ void _switchTab(BrowserTab tab) {
           },
         ),
         IconButton(
-          icon: const Icon(Iconsax.home_2),
+          icon: const Icon(Icons.home_rounded),
           onPressed: () {
             setState(() {
               showHomePage = true;
@@ -280,7 +285,7 @@ void _switchTab(BrowserTab tab) {
           },
         ),
         IconButton(
-          icon: const Icon(Iconsax.add_square),
+          icon: const Icon(Icons.add_box_rounded),
           onPressed: () => _createNewTab(),
         ),
         _buildMenuButton(),
@@ -304,7 +309,7 @@ void _switchTab(BrowserTab tab) {
           value: SampleItem.itemOne,
           child: const Row(
             children: [
-              Icon(Iconsax.refresh_left_square),
+              Icon(Icons.refresh_rounded),
               SizedBox(width: 10),
               Text('Refresh'),
             ],
@@ -317,7 +322,7 @@ void _switchTab(BrowserTab tab) {
           value: SampleItem.itemTwo,
           child: const Row(
             children: [
-              Icon(Iconsax.setting_2),
+              Icon(Icons.settings_rounded),
               SizedBox(width: 10),
               Text('Settings'),
             ],
@@ -326,15 +331,18 @@ void _switchTab(BrowserTab tab) {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SettingsPage()));
           },
         ),
-        const PopupMenuItem<SampleItem>(
+        PopupMenuItem<SampleItem>(
           value: SampleItem.itemThree,
-          child: Row(
+          child: const Row(
             children: [
-              Icon(Iconsax.share),
+              Icon(Icons.share_rounded),
               SizedBox(width: 10),
               Text('Share'),
             ],
           ),
+          onTap: () {
+            sharePressed();
+            }
         ),
       ],
     );

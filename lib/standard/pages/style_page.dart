@@ -1,34 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:myle/design_system_router.dart';
 import 'package:myle/standard/components/corner_provider.dart';
-import 'package:myle/standard/components/search_engine_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:toasty_box/toast_enums.dart';
 import 'package:toasty_box/toast_service.dart';
 
-class SearchEngineOptionPage extends StatefulWidget {
-  const SearchEngineOptionPage({super.key});
+class StylePage extends StatefulWidget {
+  const StylePage({super.key});
 
   @override
-  State<SearchEngineOptionPage> createState() => _SearchEngineOptionPageState();
+  State<StylePage> createState() => _StylePageState();
 }
 
-class _SearchEngineOptionPageState extends State<SearchEngineOptionPage> {
+class _StylePageState extends State<StylePage> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<SearchEngineProvider>(
-      builder: (context, provider, child) {
-        return Scaffold(
-          appBar: AppBar(
-            title: const Text('Search Engine'),
-          ),
-          body: Column(
-            children: [
+    return Scaffold(
+      appBar: AppBar(title: const Text('Color Mode')),
+      body: Column(
+        children: [
 
-              const SizedBox(height: 20),
+          SizedBox(height: 20,),
 
-              GestureDetector(
+          GestureDetector(
             onTap: () {
-              Provider.of<SearchEngineProvider>(context, listen: false).setSearchEngine(SearchEngine.qwant);
+              Provider.of<StyleProvider>(context, listen: false).setStyle(Style.material);
               ToastService.showWidgetToast(
                   context,
                   isClosable: true,
@@ -42,7 +39,7 @@ class _SearchEngineOptionPageState extends State<SearchEngineOptionPage> {
                   child: Container(
                   	color: Theme.of(context).colorScheme.secondary,
                   	child: Center(
-                  		child: Text('You are now searching with Qwant', style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),),
+                  		child: Text('Please restart the app', style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),),
                   	),
                   ),
                 );
@@ -58,22 +55,22 @@ class _SearchEngineOptionPageState extends State<SearchEngineOptionPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Qwant",
+                    "Material Design",
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.inversePrimary
                     ),
                     ),
-                    Image.asset("lib/assets/qwant.png", height: 32,),
+                  Icon(Iconsax.designtools, color: Theme.of(context).colorScheme.inversePrimary,),
                 ],
               ),
             ),
           ),
 
-              const SizedBox(height: 10),
+          SizedBox(height: 10,),
 
-              GestureDetector(
+          GestureDetector(
             onTap: () {
-              Provider.of<SearchEngineProvider>(context, listen: false).setSearchEngine(SearchEngine.google);
+              Provider.of<StyleProvider>(context, listen: false).setStyle(Style.standard);
               ToastService.showWidgetToast(
                   context,
                   isClosable: true,
@@ -87,7 +84,7 @@ class _SearchEngineOptionPageState extends State<SearchEngineOptionPage> {
                   child: Container(
                   	color: Theme.of(context).colorScheme.secondary,
                   	child: Center(
-                  		child: Text('You are now searching with Google', style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),),
+                  		child: Text('Please restart the app', style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),),
                   	),
                   ),
                 );
@@ -103,22 +100,22 @@ class _SearchEngineOptionPageState extends State<SearchEngineOptionPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Google",
+                    "Standard",
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.inversePrimary
                     ),
                     ),
-                    Image.asset("lib/assets/google.png", height: 32,),
+                  Icon(Iconsax.designtools, color: Theme.of(context).colorScheme.inversePrimary,),
                 ],
               ),
             ),
           ),
 
-              const SizedBox(height: 10),
+          SizedBox(height: 10,),
 
-              GestureDetector(
+          GestureDetector(
             onTap: () {
-              Provider.of<SearchEngineProvider>(context, listen: false).setSearchEngine(SearchEngine.duckduckgo);
+              Provider.of<StyleProvider>(context, listen: false).setStyle(Style.fluent);
               ToastService.showWidgetToast(
                   context,
                   isClosable: true,
@@ -132,7 +129,7 @@ class _SearchEngineOptionPageState extends State<SearchEngineOptionPage> {
                   child: Container(
                   	color: Theme.of(context).colorScheme.secondary,
                   	child: Center(
-                  		child: Text('You are now searching with DuckDuckGo', style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),),
+                  		child: Text('Please restart the app', style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),),
                   	),
                   ),
                 );
@@ -148,22 +145,22 @@ class _SearchEngineOptionPageState extends State<SearchEngineOptionPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "DuckDuckGo",
+                    "Fluent 2",
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.inversePrimary
                     ),
                     ),
-                    Image.asset("lib/assets/duckduckgo.png", height: 32,),
+                  Icon(Iconsax.designtools, color: Theme.of(context).colorScheme.inversePrimary,),
                 ],
               ),
             ),
           ),
 
-              const SizedBox(height: 10),
+          SizedBox(height: 10,),
 
-              GestureDetector(
+          GestureDetector(
             onTap: () {
-              Provider.of<SearchEngineProvider>(context, listen: false).setSearchEngine(SearchEngine.ecosia);
+              Provider.of<StyleProvider>(context, listen: false).setStyle(Style.nothing);
               ToastService.showWidgetToast(
                   context,
                   isClosable: true,
@@ -177,7 +174,7 @@ class _SearchEngineOptionPageState extends State<SearchEngineOptionPage> {
                   child: Container(
                   	color: Theme.of(context).colorScheme.secondary,
                   	child: Center(
-                  		child: Text('You are now searching with Ecosia', style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),),
+                  		child: Text('Please restart the app', style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),),
                   	),
                   ),
                 );
@@ -193,22 +190,21 @@ class _SearchEngineOptionPageState extends State<SearchEngineOptionPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Ecosia",
+                    "Nothing",
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.inversePrimary
                     ),
                     ),
-                    Image.asset("lib/assets/ecosia.png", height: 32,),
+                  Icon(Iconsax.designtools, color: Theme.of(context).colorScheme.inversePrimary,),
                 ],
               ),
             ),
           ),
 
-              const SizedBox(height: 10),
+          SizedBox(height: 10,),
 
-              GestureDetector(
+          GestureDetector(
             onTap: () {
-              Provider.of<SearchEngineProvider>(context, listen: false).setSearchEngine(SearchEngine.brave);
               ToastService.showWidgetToast(
                   context,
                   isClosable: true,
@@ -222,7 +218,7 @@ class _SearchEngineOptionPageState extends State<SearchEngineOptionPage> {
                   child: Container(
                   	color: Theme.of(context).colorScheme.secondary,
                   	child: Center(
-                  		child: Text('You are now searching with Brave', style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),),
+                  		child: Text('Coming Soon!', style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),),
                   	),
                   ),
                 );
@@ -238,110 +234,18 @@ class _SearchEngineOptionPageState extends State<SearchEngineOptionPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Brave",
+                    "Cupertino | Coming Soon!",
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.inversePrimary
                     ),
                     ),
-                    Image.asset("lib/assets/brave.png", height: 32,),
+                  Icon(Iconsax.designtools, color: Theme.of(context).colorScheme.inversePrimary,),
                 ],
               ),
             ),
           ),
-
-              const SizedBox(height: 10),
-
-              GestureDetector(
-            onTap: () {
-              Provider.of<SearchEngineProvider>(context, listen: false).setSearchEngine(SearchEngine.yahoo);
-              ToastService.showWidgetToast(
-                  context,
-                  isClosable: true,
-                  backgroundColor: Theme.of(context).colorScheme.secondary,
-                  shadowColor: const Color.fromARGB(255, 117, 117, 117),
-                  length: ToastLength.medium,
-                  expandedHeight: 100,
-                  slideCurve: Curves.elasticInOut,
-                  positionCurve: Curves.bounceOut,
-                  dismissDirection: DismissDirection.none,
-                  child: Container(
-                  	color: Theme.of(context).colorScheme.secondary,
-                  	child: Center(
-                  		child: Text('You are now searching with Yahoo', style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),),
-                  	),
-                  ),
-                );
-            },
-            child: Container(
-              decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.secondary,
-                    borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
-                  ),
-                  margin: const EdgeInsets.only(left: 25, right: 25),
-                  padding: const EdgeInsets.all(16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Yahoo!",
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.inversePrimary
-                    ),
-                    ),
-                    Image.asset("lib/assets/yahoo.png", height: 32,),
-                ],
-              ),
-            ),
-          ),
-
-              const SizedBox(height: 10),
-
-              GestureDetector(
-            onTap: () {
-              Provider.of<SearchEngineProvider>(context, listen: false).setSearchEngine(SearchEngine.bing);
-              ToastService.showWidgetToast(
-                  context,
-                  isClosable: true,
-                  backgroundColor: Theme.of(context).colorScheme.secondary,
-                  shadowColor: const Color.fromARGB(255, 117, 117, 117),
-                  length: ToastLength.medium,
-                  expandedHeight: 100,
-                  slideCurve: Curves.elasticInOut,
-                  positionCurve: Curves.bounceOut,
-                  dismissDirection: DismissDirection.none,
-                  child: Container(
-                  	color: Theme.of(context).colorScheme.secondary,
-                  	child: Center(
-                  		child: Text('You are now searching with Bing', style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),),
-                  	),
-                  ),
-                );
-            },
-            child: Container(
-              decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.secondary,
-                    borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
-                  ),
-                  margin: const EdgeInsets.only(left: 25, right: 25),
-                  padding: const EdgeInsets.all(16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Bing",
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.inversePrimary
-                    ),
-                   ),
-                   Image.asset("lib/assets/bing.png", height: 32,),
-                ],
-              ),
-            ),
-          ),
-            ],
-          ),
-        );
-      },
+        ],
+      ),
     );
   }
 }

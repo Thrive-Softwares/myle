@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:myle/design_system_router.dart';
 import 'package:myle/standard/components/corner_provider.dart';
-import 'package:myle/standard/components/theme_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:toasty_box/toast_enums.dart';
+import 'package:toasty_box/toast_service.dart';
 
-class ColorModePage extends StatefulWidget {
-  const ColorModePage({super.key});
+class StylePage extends StatefulWidget {
+  const StylePage({super.key});
 
   @override
-  State<ColorModePage> createState() => _ColorModePageState();
+  State<StylePage> createState() => _StylePageState();
 }
 
-class _ColorModePageState extends State<ColorModePage> {
+class _StylePageState extends State<StylePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,11 +25,11 @@ class _ColorModePageState extends State<ColorModePage> {
 
           GestureDetector(
             onTap: () {
-              Provider.of<ThemeProvider>(context, listen: false).setTheme(ThemeType.dark);
+              Provider.of<StyleProvider>(context, listen: false).setStyle(Style.material);
             },
             child: Container(
               decoration: BoxDecoration(
-                    color: Colors.black,
+                    color: Theme.of(context).colorScheme.secondary,
                     borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
                   margin: const EdgeInsets.only(left: 25, right: 25),
@@ -36,12 +38,12 @@ class _ColorModePageState extends State<ColorModePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Black (Dark)",
+                    "Material Design",
                     style: TextStyle(
-                      color: Colors.white
+                      color: Theme.of(context).colorScheme.inversePrimary
                     ),
                     ),
-                  Icon(Iconsax.color_swatch, color: Colors.white,),
+                  Icon(Icons.design_services_rounded, color: Theme.of(context).colorScheme.inversePrimary,),
                 ],
               ),
             ),
@@ -51,11 +53,11 @@ class _ColorModePageState extends State<ColorModePage> {
 
           GestureDetector(
             onTap: () {
-              Provider.of<ThemeProvider>(context, listen: false).setTheme(ThemeType.light);
+              Provider.of<StyleProvider>(context, listen: false).setStyle(Style.standard);
             },
             child: Container(
               decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.secondary,
                     borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
                   margin: const EdgeInsets.only(left: 25, right: 25),
@@ -64,12 +66,12 @@ class _ColorModePageState extends State<ColorModePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "White (Light)",
+                    "Standard",
                     style: TextStyle(
-                      color: Colors.black
+                      color: Theme.of(context).colorScheme.inversePrimary
                     ),
                     ),
-                  Icon(Iconsax.color_swatch, color: Colors.black,),
+                  Icon(Icons.design_services_rounded, color: Theme.of(context).colorScheme.inversePrimary,),
                 ],
               ),
             ),
@@ -79,11 +81,11 @@ class _ColorModePageState extends State<ColorModePage> {
 
           GestureDetector(
             onTap: () {
-              Provider.of<ThemeProvider>(context, listen: false).setTheme(ThemeType.blue);
+              Provider.of<StyleProvider>(context, listen: false).setStyle(Style.fluent);
             },
             child: Container(
               decoration: BoxDecoration(
-                    color: Colors.blue[900],
+                    color: Theme.of(context).colorScheme.secondary,
                     borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
                   margin: const EdgeInsets.only(left: 25, right: 25),
@@ -92,12 +94,12 @@ class _ColorModePageState extends State<ColorModePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Blue",
+                    "Fluent 2",
                     style: TextStyle(
-                      color: Colors.white
+                      color: Theme.of(context).colorScheme.inversePrimary
                     ),
                     ),
-                  Icon(Iconsax.color_swatch, color: Colors.white,),
+                  Icon(Icons.design_services_rounded, color: Theme.of(context).colorScheme.inversePrimary,),
                 ],
               ),
             ),
@@ -107,11 +109,11 @@ class _ColorModePageState extends State<ColorModePage> {
 
           GestureDetector(
             onTap: () {
-              Provider.of<ThemeProvider>(context, listen: false).setTheme(ThemeType.forest);
+              Provider.of<StyleProvider>(context, listen: false).setStyle(Style.nothing);
             },
             child: Container(
               decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 174, 104, 26),
+                    color: Theme.of(context).colorScheme.secondary,
                     borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
                   margin: const EdgeInsets.only(left: 25, right: 25),
@@ -120,12 +122,12 @@ class _ColorModePageState extends State<ColorModePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Forest",
+                    "Nothing",
                     style: TextStyle(
-                      color: Colors.white
+                      color: Theme.of(context).colorScheme.inversePrimary
                     ),
                     ),
-                  Icon(Iconsax.color_swatch, color: Colors.white,),
+                  Icon(Icons.design_services_rounded, color: Theme.of(context).colorScheme.inversePrimary,),
                 ],
               ),
             ),
@@ -135,11 +137,27 @@ class _ColorModePageState extends State<ColorModePage> {
 
           GestureDetector(
             onTap: () {
-              Provider.of<ThemeProvider>(context, listen: false).setTheme(ThemeType.cozy);
+              ToastService.showWidgetToast(
+                  context,
+                  isClosable: true,
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                  shadowColor: const Color.fromARGB(255, 117, 117, 117),
+                  length: ToastLength.medium,
+                  expandedHeight: 100,
+                  slideCurve: Curves.elasticInOut,
+                  positionCurve: Curves.bounceOut,
+                  dismissDirection: DismissDirection.none,
+                  child: Container(
+                  	color: Theme.of(context).colorScheme.secondary,
+                  	child: Center(
+                  		child: Text('Coming Soon!', style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),),
+                  	),
+                  ),
+                );
             },
             child: Container(
               decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 155, 124, 185),
+                    color: Theme.of(context).colorScheme.secondary,
                     borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
                   margin: const EdgeInsets.only(left: 25, right: 25),
@@ -148,28 +166,16 @@ class _ColorModePageState extends State<ColorModePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Violet",
+                    "Cupertino | Coming Soon!",
                     style: TextStyle(
-                      color: Colors.white
+                      color: Theme.of(context).colorScheme.inversePrimary
                     ),
                     ),
-                  Icon(Iconsax.color_swatch, color: Colors.white,),
+                  Icon(Icons.design_services_rounded, color: Theme.of(context).colorScheme.inversePrimary,),
                 ],
               ),
             ),
           ),
-
-          SizedBox(height: 20,),
-
-          Text(
-            "More Colors to come...",
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.inversePrimary,
-              fontSize: 20,
-              fontWeight: FontWeight.w600
-            ),
-            ),
-
         ],
       ),
     );

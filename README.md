@@ -1,5 +1,3 @@
-
-
 # Myle the Browser that adapts to you.
 
 ![Image](https://framerusercontent.com/images/Eacw9oeFmBymRaMuwJVmFbnapn4.png)
