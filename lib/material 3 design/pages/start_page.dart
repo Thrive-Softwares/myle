@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:myle/standard/components/search_engine_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -26,7 +25,7 @@ class HomePage extends StatelessWidget {
             alignment: WrapAlignment.center,
             children: [
               _QuickAccessButton(
-                icon: Iconsax.search_normal_1,
+                icon: Icons.search_rounded,
                 label: 'Search',
                 url: Provider.of<SearchEngineProvider>(context, listen: false).getSearchUrlStart(),
                 onTap: onUrlSelected,
@@ -44,7 +43,7 @@ class HomePage extends StatelessWidget {
                 onTap: onUrlSelected,
               ),
               _QuickAccessButton(
-                icon: Iconsax.play_circle,
+                icon: Icons.play_circle_rounded,
                 label: 'YouTube',
                 url: 'https://www.youtube.com',
                 onTap: onUrlSelected,

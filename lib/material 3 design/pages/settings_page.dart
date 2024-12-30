@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:myle/standard/components/corner_provider.dart';
 import 'package:myle/standard/components/theme_provider.dart';
-import 'package:myle/standard/pages/color_mode_page.dart';
-import 'package:myle/standard/pages/corner_radius_page.dart';
-import 'package:myle/standard/pages/search_engine_option_page.dart';
+import 'package:myle/material 3 design/pages/color_mode_page.dart';
+import 'package:myle/material 3 design/pages/corner_radius_page.dart';
+import 'package:myle/material 3 design/pages/search_engine_option_page.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -65,7 +64,7 @@ Future<void> _launchUrlKofi() async {
                   Text(
                     "Color Mode",
                     ),
-                  Icon(Iconsax.arrow_right_3),
+                  Icon(Icons.arrow_forward_ios_rounded),
                 ],
               ),
             ),
@@ -90,7 +89,7 @@ Future<void> _launchUrlKofi() async {
                   Text(
                     "Styles",
                     ),
-                  Icon(Iconsax.arrow_right_3),
+                  Icon(Icons.arrow_forward_ios_rounded),
                 ],
               ),
             ),
@@ -142,7 +141,7 @@ Future<void> _launchUrlKofi() async {
                   Text(
                     "Corner Radius",
                     ),
-                  Icon(Iconsax.arrow_right_3),
+                  Icon(Icons.arrow_forward_ios_rounded),
                 ],
               ),
             ),
@@ -172,7 +171,7 @@ Future<void> _launchUrlKofi() async {
                   Text(
                     "Search Engine",
                     ),
-                  Icon(Iconsax.arrow_right_3),
+                  Icon(Icons.arrow_forward_ios_rounded),
                 ],
               ),
             ),
@@ -197,7 +196,7 @@ Future<void> _launchUrlKofi() async {
                   Text(
                     "Language | Coming Soon!",
                     ),
-                  Icon(Iconsax.arrow_right_3),
+                  Icon(Icons.arrow_forward_ios_rounded),
                 ],
               ),
             ),
@@ -222,7 +221,7 @@ Future<void> _launchUrlKofi() async {
                   Text(
                     "Set as Default Browser",
                     ),
-                  Icon(Iconsax.arrow_right_3),
+                  Icon(Icons.arrow_forward_ios_rounded),
                 ],
               ),
             ),
