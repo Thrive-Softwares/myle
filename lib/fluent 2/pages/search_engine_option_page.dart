@@ -49,6 +49,7 @@ class _SearchEngineOptionPageState extends State<SearchEngineOptionPage> {
             },
             child: Container(
               decoration: BoxDecoration(
+                border: Border.all(color: Theme.of(context).colorScheme.tertiary),
                     color: Theme.of(context).colorScheme.secondary,
                     borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
@@ -94,6 +95,7 @@ class _SearchEngineOptionPageState extends State<SearchEngineOptionPage> {
             },
             child: Container(
               decoration: BoxDecoration(
+                border: Border.all(color: Theme.of(context).colorScheme.tertiary),
                     color: Theme.of(context).colorScheme.secondary,
                     borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
@@ -139,6 +141,7 @@ class _SearchEngineOptionPageState extends State<SearchEngineOptionPage> {
             },
             child: Container(
               decoration: BoxDecoration(
+                border: Border.all(color: Theme.of(context).colorScheme.tertiary),
                     color: Theme.of(context).colorScheme.secondary,
                     borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
@@ -184,6 +187,7 @@ class _SearchEngineOptionPageState extends State<SearchEngineOptionPage> {
             },
             child: Container(
               decoration: BoxDecoration(
+                border: Border.all(color: Theme.of(context).colorScheme.tertiary),
                     color: Theme.of(context).colorScheme.secondary,
                     borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
@@ -229,6 +233,7 @@ class _SearchEngineOptionPageState extends State<SearchEngineOptionPage> {
             },
             child: Container(
               decoration: BoxDecoration(
+                border: Border.all(color: Theme.of(context).colorScheme.tertiary),
                     color: Theme.of(context).colorScheme.secondary,
                     borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
@@ -274,6 +279,7 @@ class _SearchEngineOptionPageState extends State<SearchEngineOptionPage> {
             },
             child: Container(
               decoration: BoxDecoration(
+                border: Border.all(color: Theme.of(context).colorScheme.tertiary),
                     color: Theme.of(context).colorScheme.secondary,
                     borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
@@ -319,6 +325,7 @@ class _SearchEngineOptionPageState extends State<SearchEngineOptionPage> {
             },
             child: Container(
               decoration: BoxDecoration(
+                border: Border.all(color: Theme.of(context).colorScheme.tertiary),
                     color: Theme.of(context).colorScheme.secondary,
                     borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),

@@ -1,4 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:myle/standard/components/browser_tab.dart';
 import 'package:myle/standard/components/corner_provider.dart';
@@ -177,9 +178,10 @@ void _switchTab(BrowserTab tab) {
             filled: true,
             fillColor: Theme.of(context).colorScheme.tertiary,
             contentPadding: const EdgeInsets.only(top: 10, left: 15),
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),), borderSide: BorderSide.none),
+            disabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Theme.of(context).colorScheme.primary), borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),),
+            enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Theme.of(context).colorScheme.primary), borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),),
             hintText: 'Begin your journey',
-            suffixIcon: Icon(FluentIcons.search),
+            suffixIcon: Icon(FluentSystemIcons.ic_fluent_search_regular, size: 24,),
           ),
           onSubmitted: loadUrl,
         ),
@@ -196,7 +198,10 @@ void _switchTab(BrowserTab tab) {
       itemCount: tabs.length + 1, // +1 for new tab button
       itemBuilder: (context, index) {
         if (index == tabs.length) {
-          return Icon(FluentIcons.add);
+          return Padding(
+            padding: const EdgeInsets.only(left: 12),
+            child: Icon(FluentSystemIcons.ic_fluent_add_regular, size: 24,),
+          );
         }
 
         final tab = tabs[index];
@@ -209,6 +214,7 @@ void _switchTab(BrowserTab tab) {
               color: tab == currentTab 
                 ? Theme.of(context).colorScheme.tertiary
                 : Theme.of(context).colorScheme.secondary,
+                border: Border.all(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
             ),
             child: Row(
@@ -229,7 +235,9 @@ void _switchTab(BrowserTab tab) {
                     child: CircularProgressIndicator(strokeWidth: 2),
                   )
                 else
-                  Icon(FluentIcons.chrome_close)
+                SizedBox(width: 12,),
+                  Icon(FluentSystemIcons.ic_fluent_dismiss_regular, size: 18,),
+                  SizedBox(width: 8,),
               ],
             ),
           ),
@@ -246,10 +254,10 @@ void _switchTab(BrowserTab tab) {
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Icon(FluentIcons.back),
-        Icon(FluentIcons.forward),
-        Icon(FluentIcons.home),
-        Icon(FluentIcons.add),
+        Icon(FluentSystemIcons.ic_fluent_arrow_left_regular, size: 24,),
+        Icon(FluentSystemIcons.ic_fluent_arrow_right_regular, size: 24,),
+        Icon(FluentSystemIcons.ic_fluent_home_regular, size: 24,),
+        Icon(FluentSystemIcons.ic_fluent_add_regular, size: 24,),
         _buildMenuButton(),
       ],
     ),
@@ -269,9 +277,9 @@ void _switchTab(BrowserTab tab) {
       itemBuilder: (BuildContext context) => <PopupMenuEntry<SampleItem>>[
         PopupMenuItem<SampleItem>(
           value: SampleItem.itemOne,
-          child: const Row(
+          child: Row(
             children: [
-              Icon(Icons.refresh_rounded),
+              Icon(FluentSystemIcons.ic_fluent_arrow_clockwise_regular, size: 24),
               SizedBox(width: 10),
               Text('Refresh'),
             ],
@@ -282,9 +290,9 @@ void _switchTab(BrowserTab tab) {
         ),
         PopupMenuItem<SampleItem>(
           value: SampleItem.itemTwo,
-          child: const Row(
+          child: Row(
             children: [
-              Icon(Icons.settings_rounded),
+              Icon(FluentSystemIcons.ic_fluent_settings_regular, size: 24),
               SizedBox(width: 10),
               Text('Settings'),
             ],
@@ -295,9 +303,9 @@ void _switchTab(BrowserTab tab) {
         ),
         PopupMenuItem<SampleItem>(
           value: SampleItem.itemThree,
-          child: const Row(
+          child: Row(
             children: [
-              Icon(Icons.share_rounded),
+              Icon(FluentSystemIcons.ic_fluent_share_ios_regular, size: 24),
               SizedBox(width: 10),
               Text('Share'),
             ],

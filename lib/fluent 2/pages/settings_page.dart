@@ -1,3 +1,4 @@
+import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:myle/fluent%202/pages/style_page.dart';
 import 'package:myle/standard/components/corner_provider.dart';
@@ -70,6 +71,7 @@ Future<void> _launchUrlKofi() async {
             },
             child: Container(
               decoration: BoxDecoration(
+                border: Border.all(color: Theme.of(context).colorScheme.tertiary),
                     color: Theme.of(context).colorScheme.secondary,
                     borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
@@ -81,7 +83,7 @@ Future<void> _launchUrlKofi() async {
                   Text(
                     "Color Mode",
                     ),
-                  Icon(Icons.arrow_forward_ios_rounded),
+                  Icon(FluentSystemIcons.ic_fluent_arrow_right_regular, size: 20,),
                 ],
               ),
             ),
@@ -95,6 +97,7 @@ Future<void> _launchUrlKofi() async {
             },
             child: Container(
               decoration: BoxDecoration(
+                border: Border.all(color: Theme.of(context).colorScheme.tertiary),
                     color: Theme.of(context).colorScheme.secondary,
                     borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
@@ -106,7 +109,7 @@ Future<void> _launchUrlKofi() async {
                   Text(
                     "Styles",
                     ),
-                  Icon(Icons.arrow_forward_ios_rounded),
+                  Icon(FluentSystemIcons.ic_fluent_arrow_right_regular, size: 20,),
                 ],
               ),
             ),
@@ -147,6 +150,7 @@ Future<void> _launchUrlKofi() async {
             },
             child: Container(
               decoration: BoxDecoration(
+                border: Border.all(color: Theme.of(context).colorScheme.tertiary),
                     color: Theme.of(context).colorScheme.secondary,
                     borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
@@ -158,7 +162,7 @@ Future<void> _launchUrlKofi() async {
                   Text(
                     "Corner Radius",
                     ),
-                  Icon(Icons.arrow_forward_ios_rounded),
+                  Icon(FluentSystemIcons.ic_fluent_arrow_right_regular, size: 20,),
                 ],
               ),
             ),
@@ -177,6 +181,7 @@ Future<void> _launchUrlKofi() async {
             },
             child: Container(
               decoration: BoxDecoration(
+                border: Border.all(color: Theme.of(context).colorScheme.tertiary),
                     color: Theme.of(context).colorScheme.secondary,
                     borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
@@ -188,7 +193,7 @@ Future<void> _launchUrlKofi() async {
                   Text(
                     "Search Engine",
                     ),
-                  Icon(Icons.arrow_forward_ios_rounded),
+                  Icon(FluentSystemIcons.ic_fluent_arrow_right_regular, size: 20,),
                 ],
               ),
             ),
@@ -202,6 +207,7 @@ Future<void> _launchUrlKofi() async {
             },
             child: Container(
               decoration: BoxDecoration(
+                border: Border.all(color: Theme.of(context).colorScheme.tertiary),
                     color: Theme.of(context).colorScheme.secondary,
                     borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
@@ -213,7 +219,7 @@ Future<void> _launchUrlKofi() async {
                   Text(
                     "Language | Coming Soon!",
                     ),
-                  Icon(Icons.arrow_forward_ios_rounded),
+                  Icon(FluentSystemIcons.ic_fluent_arrow_right_regular, size: 20,),
                 ],
               ),
             ),
@@ -227,6 +233,7 @@ Future<void> _launchUrlKofi() async {
             },
             child: Container(
               decoration: BoxDecoration(
+                border: Border.all(color: Theme.of(context).colorScheme.tertiary),
                     color: Theme.of(context).colorScheme.secondary,
                     borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
@@ -238,7 +245,7 @@ Future<void> _launchUrlKofi() async {
                   Text(
                     "Set as Default Browser",
                     ),
-                  Icon(Icons.arrow_forward_ios_rounded),
+                  Icon(FluentSystemIcons.ic_fluent_arrow_right_regular, size: 20,),
                 ],
               ),
             ),

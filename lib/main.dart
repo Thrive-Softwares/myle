@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
       title: 'Myle',
       debugShowCheckedModeBanner: false,
       theme: Provider.of<ThemeProvider>(context).themeData,
-      home: BrowserHomeFluent(), // Provider.of<StyleProvider>(context, listen: false).getStyle(),
+      home: Provider.of<StyleProvider>(context, listen: false).getStyle(),
     );
   }
 }

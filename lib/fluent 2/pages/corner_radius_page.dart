@@ -45,6 +45,7 @@ class _CornerRadiusPageState extends State<CornerRadiusPage> {
               },
               child: Container(
                 decoration: BoxDecoration(
+                  border: Border.all(color: Theme.of(context).colorScheme.tertiary),
                       color: Theme.of(context).colorScheme.secondary,
                       borderRadius: BorderRadius.circular(0),
                     ),
@@ -84,6 +85,7 @@ class _CornerRadiusPageState extends State<CornerRadiusPage> {
               },
               child: Container(
                 decoration: BoxDecoration(
+                  border: Border.all(color: Theme.of(context).colorScheme.tertiary),
                       color: Theme.of(context).colorScheme.secondary,
                       borderRadius: BorderRadius.circular(16),
                     ),
@@ -123,6 +125,7 @@ class _CornerRadiusPageState extends State<CornerRadiusPage> {
               },
               child: Container(
                 decoration: BoxDecoration(
+                  border: Border.all(color: Theme.of(context).colorScheme.tertiary),
                       color: Theme.of(context).colorScheme.secondary,
                       borderRadius: BorderRadius.circular(99),
                     ),
