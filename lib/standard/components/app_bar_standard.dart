@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:myle/standard/components/browser_tab.dart';
 import 'package:myle/standard/components/corner_provider.dart';
@@ -19,6 +20,7 @@ class BrowserHomeStandard extends StatefulWidget {
 }
 
 class _BrowserHomeStandardState extends State<BrowserHomeStandard> {
+  static const platform = MethodChannel('com.yourdomain.browser/default_browser');
   SampleItem? selectedItem;
   late WebViewController controller;
   List<BrowserTab> tabs = [];
@@ -30,10 +32,33 @@ class _BrowserHomeStandardState extends State<BrowserHomeStandard> {
   bool isSearchBarFocused = false;
 
   @override
-    void initState() {
-      super.initState();
-      _createNewTab();
+  void initState() {
+    super.initState();
+    _createNewTab();
+    _setupMethodChannel();
+  }
+
+  void _setupMethodChannel() {
+    platform.setMethodCallHandler((call) async {
+      if (call.method == 'loadUrl') {
+        final url = call.arguments as String;
+        _handleIncomingUrl(url);
+      }
+      return null;
+    });
+  }
+
+  void _handleIncomingUrl(String url) {
+    setState(() {
+      showHomePage = false;
+      isSearchBarFocused = false;
+    });
+    
+    if (url.isNotEmpty) {
+      urlController.text = url;
+      loadUrl(url);
     }
+  }
 
   @override
   void dispose() {
