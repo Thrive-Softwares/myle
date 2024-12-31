@@ -159,6 +159,146 @@ class _ColorModePageState extends State<ColorModePage> {
             ),
           ),
 
+          SizedBox(height: 10,),
+
+          GestureDetector(
+            onTap: () {
+              Provider.of<ThemeProvider>(context, listen: false).setTheme(ThemeType.green);
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 67, 85, 59),
+                    borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
+                  ),
+                  margin: const EdgeInsets.only(left: 25, right: 25),
+                  padding: const EdgeInsets.all(16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Green",
+                    style: TextStyle(
+                      color: Colors.white
+                    ),
+                    ),
+                  Icon(Iconsax.color_swatch, color: Colors.white,),
+                ],
+              ),
+            ),
+          ),
+
+          SizedBox(height: 10,),
+
+          GestureDetector(
+            onTap: () {
+              Provider.of<ThemeProvider>(context, listen: false).setTheme(ThemeType.orange);
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 238, 152, 71),
+                    borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
+                  ),
+                  margin: const EdgeInsets.only(left: 25, right: 25),
+                  padding: const EdgeInsets.all(16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Orange",
+                    style: TextStyle(
+                      color: Colors.white
+                    ),
+                    ),
+                  Icon(Iconsax.color_swatch, color: Colors.white,),
+                ],
+              ),
+            ),
+          ),
+
+          SizedBox(height: 10,),
+
+          GestureDetector(
+            onTap: () {
+              Provider.of<ThemeProvider>(context, listen: false).setTheme(ThemeType.red);
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 212, 41, 41),
+                    borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
+                  ),
+                  margin: const EdgeInsets.only(left: 25, right: 25),
+                  padding: const EdgeInsets.all(16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Red",
+                    style: TextStyle(
+                      color: Colors.white
+                    ),
+                    ),
+                  Icon(Iconsax.color_swatch, color: Colors.white,),
+                ],
+              ),
+            ),
+          ),
+
+          SizedBox(height: 10,),
+
+          GestureDetector(
+            onTap: () {
+              Provider.of<ThemeProvider>(context, listen: false).setTheme(ThemeType.lightblue);
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 91, 142, 237),
+                    borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
+                  ),
+                  margin: const EdgeInsets.only(left: 25, right: 25),
+                  padding: const EdgeInsets.all(16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Light Blue",
+                    style: TextStyle(
+                      color: Colors.white
+                    ),
+                    ),
+                  Icon(Iconsax.color_swatch, color: Colors.white,),
+                ],
+              ),
+            ),
+          ),
+
+          SizedBox(height: 10,),
+
+          GestureDetector(
+            onTap: () {
+              Provider.of<ThemeProvider>(context, listen: false).setTheme(ThemeType.thecolor);
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 113, 112, 165),
+                    borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
+                  ),
+                  margin: const EdgeInsets.only(left: 25, right: 25),
+                  padding: const EdgeInsets.all(16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "The Color",
+                    style: TextStyle(
+                      color: Colors.white
+                    ),
+                    ),
+                  Icon(Iconsax.color_swatch, color: Colors.white,),
+                ],
+              ),
+            ),
+          ),
+
           SizedBox(height: 20,),
 
           Text(

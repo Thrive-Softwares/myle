@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:myle/fluent%202/pages/style_page.dart';
 import 'package:myle/standard/components/corner_provider.dart';
-import 'package:myle/fluent 2/pages/color_mode_page.dart';
 import 'package:myle/fluent 2/pages/corner_radius_page.dart';
 import 'package:myle/fluent 2/pages/search_engine_option_page.dart';
 import 'package:provider/provider.dart';
+import 'package:toasty_box/toast_enums.dart';
+import 'package:toasty_box/toast_service.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 final Uri _urlRepo = Uri.parse('https://github.com/Thrive-Softwares/myle');
@@ -49,7 +50,23 @@ Future<void> _launchUrlKofi() async {
 
           GestureDetector(
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => ColorModePage()));
+              ToastService.showWidgetToast(
+                  context,
+                  isClosable: true,
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                  shadowColor: const Color.fromARGB(255, 117, 117, 117),
+                  length: ToastLength.medium,
+                  expandedHeight: 100,
+                  slideCurve: Curves.elasticInOut,
+                  positionCurve: Curves.bounceOut,
+                  dismissDirection: DismissDirection.none,
+                  child: Container(
+                  	color: Theme.of(context).colorScheme.secondary,
+                  	child: Center(
+                  		child: Text('Color Modes are with this Style not available', style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),),
+                  	),
+                  ),
+                );
             },
             child: Container(
               decoration: BoxDecoration(

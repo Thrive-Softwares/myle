@@ -32,13 +32,13 @@ class HomePage extends StatelessWidget {
                 onTap: onUrlSelected,
               ),
               _QuickAccessButton(
-                icon: Icons.newspaper_rounded,
+                icon: Iconsax.note_2,
                 label: 'Tech news',
                 url: 'https://www.theverge.com/',
                 onTap: onUrlSelected,
               ),
               _QuickAccessButton(
-                icon: Icons.email_rounded,
+                icon: Iconsax.sms,
                 label: 'Gmail',
                 url: 'https://mail.google.com',
                 onTap: onUrlSelected,
