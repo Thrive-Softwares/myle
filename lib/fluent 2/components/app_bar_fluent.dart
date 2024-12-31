@@ -1,3 +1,4 @@
+import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:myle/standard/components/browser_tab.dart';
 import 'package:myle/standard/components/corner_provider.dart';
@@ -178,10 +179,7 @@ void _switchTab(BrowserTab tab) {
             contentPadding: const EdgeInsets.only(top: 10, left: 15),
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),), borderSide: BorderSide.none),
             hintText: 'Begin your journey',
-            suffixIcon: IconButton(
-              icon: const Icon(Icons.search_rounded),
-              onPressed: () => loadUrl(urlController.text),
-            ),
+            suffixIcon: Icon(FluentIcons.search),
           ),
           onSubmitted: loadUrl,
         ),
@@ -198,10 +196,7 @@ void _switchTab(BrowserTab tab) {
       itemCount: tabs.length + 1, // +1 for new tab button
       itemBuilder: (context, index) {
         if (index == tabs.length) {
-          return IconButton(
-            icon: const Icon(Icons.add_box_rounded),
-            onPressed: _createNewTab,
-          );
+          return Icon(FluentIcons.add);
         }
 
         final tab = tabs[index];
@@ -234,10 +229,7 @@ void _switchTab(BrowserTab tab) {
                     child: CircularProgressIndicator(strokeWidth: 2),
                   )
                 else
-                  IconButton(
-                    icon: const Icon(Icons.close, size: 16),
-                    onPressed: () => _closeTab(tab),
-                  ),
+                  Icon(FluentIcons.chrome_close)
               ],
             ),
           ),
@@ -254,40 +246,10 @@ void _switchTab(BrowserTab tab) {
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        IconButton(
-          icon: const Icon(Icons.arrow_back_ios_rounded),
-          onPressed: () {
-            currentTab.controller.goBack();
-            setState(() {
-              isSearchBarFocused = false; // Reset focus when going back
-            });
-            FocusScope.of(context).unfocus(); // Actively unfocus
-          },
-        ),
-        IconButton(
-          icon: const Icon(Icons.arrow_forward_ios_rounded),
-          onPressed: () {
-            currentTab.controller.goForward();
-            setState(() {
-              isSearchBarFocused = false; // Reset focus when going forward
-            });
-            FocusScope.of(context).unfocus(); // Actively unfocus
-          },
-        ),
-        IconButton(
-          icon: const Icon(Icons.home_rounded),
-          onPressed: () {
-            setState(() {
-              showHomePage = true;
-              isSearchBarFocused = false; // Reset focus when going home
-            });
-            FocusScope.of(context).unfocus(); // Actively unfocus
-          },
-        ),
-        IconButton(
-          icon: const Icon(Icons.add_box_rounded),
-          onPressed: () => _createNewTab(),
-        ),
+        Icon(FluentIcons.back),
+        Icon(FluentIcons.forward),
+        Icon(FluentIcons.home),
+        Icon(FluentIcons.add),
         _buildMenuButton(),
       ],
     ),

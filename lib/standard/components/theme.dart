@@ -54,3 +54,58 @@ ThemeData cozy = ThemeData(
     inversePrimary: const Color.fromARGB(255, 252, 248, 255),
   ),
 );
+
+ThemeData green = ThemeData(
+  brightness: Brightness.dark,
+  colorScheme: ColorScheme.dark(
+    surface: const Color.fromARGB(255, 31, 43, 25),
+    primary: const Color.fromARGB(255, 250, 199, 80),
+    secondary: const Color.fromARGB(255, 67, 85, 59),
+    tertiary: const Color.fromARGB(255, 106, 136, 94),
+    inversePrimary: const Color.fromARGB(255, 255, 255, 255),
+  ),
+);
+
+ThemeData orange = ThemeData(
+  brightness: Brightness.dark,
+  colorScheme: ColorScheme.dark(
+    surface: const Color.fromARGB(255, 214, 73, 12),
+    primary: const Color.fromARGB(255, 214, 73, 12),
+    secondary: const Color.fromARGB(255, 243, 101, 39),
+    tertiary: const Color.fromARGB(255, 247, 135, 64),
+    inversePrimary: const Color.fromARGB(255, 255, 255, 255),
+  ),
+);
+
+ThemeData red = ThemeData(
+  brightness: Brightness.dark,
+  colorScheme: ColorScheme.dark(
+    surface: const Color.fromARGB(255, 242, 107, 103),
+    primary: const Color.fromARGB(255, 242, 107, 103),
+    secondary: const Color.fromARGB(255, 226, 85, 83),
+    tertiary: const Color.fromARGB(255, 244, 173, 170),
+    inversePrimary: const Color.fromARGB(255, 255, 255, 255),
+  ),
+);
+
+ThemeData lightblue = ThemeData(
+  brightness: Brightness.dark,
+  colorScheme: ColorScheme.dark(
+    surface: const Color.fromARGB(255, 91, 142, 237),
+    primary: const Color.fromARGB(255, 91, 142, 237),
+    secondary: const Color.fromARGB(255, 148, 187, 254),
+    tertiary: const Color.fromARGB(255, 196, 212, 245),
+    inversePrimary: const Color.fromARGB(255, 255, 255, 255),
+  ),
+);
+
+ThemeData thecolor = ThemeData(
+  brightness: Brightness.dark,
+  colorScheme: ColorScheme.dark(
+    surface: const Color.fromARGB(255, 203, 175, 204),
+    primary: const Color.fromARGB(255, 179, 134, 164),
+    secondary: const Color.fromARGB(255, 113, 112, 165),
+    tertiary: const Color.fromARGB(255, 179, 134, 164),
+    inversePrimary: const Color.fromARGB(255, 255, 255, 255),
+  ),
+);

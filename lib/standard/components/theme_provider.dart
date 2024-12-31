@@ -7,7 +7,12 @@ enum ThemeType {
   dark,
   blue,
   forest,
-  cozy
+  cozy,
+  green,
+  red,
+  orange,
+  lightblue,
+  thecolor,
 }
 
 class ThemeProvider extends ChangeNotifier {
@@ -36,6 +41,16 @@ class ThemeProvider extends ChangeNotifier {
         return forest;
       case ThemeType.cozy:
         return cozy;
+      case ThemeType.green:
+        return green;
+      case ThemeType.red:
+        return red;
+      case ThemeType.orange:
+        return orange;
+      case ThemeType.lightblue:
+        return lightblue;
+      case ThemeType.thecolor:
+        return thecolor;
     }
   }
   
@@ -65,6 +80,21 @@ class ThemeProvider extends ChangeNotifier {
         _currentTheme = ThemeType.cozy;
         break;
       case ThemeType.cozy:
+        _currentTheme = ThemeType.green;
+        break;
+      case ThemeType.green:
+        _currentTheme = ThemeType.red;
+        break;
+      case ThemeType.red:
+        _currentTheme = ThemeType.orange;
+        break;
+      case ThemeType.orange:
+        _currentTheme = ThemeType.lightblue;
+        break;
+      case ThemeType.lightblue:
+        _currentTheme = ThemeType.thecolor;
+        break;
+      case ThemeType.thecolor:
         _currentTheme = ThemeType.light;
         break;
     }
@@ -77,4 +107,9 @@ class ThemeProvider extends ChangeNotifier {
   bool get isCustomMode => _currentTheme == ThemeType.blue;
   bool get isForestMode => _currentTheme == ThemeType.forest;
   bool get isCozyMode => _currentTheme == ThemeType.cozy;
+  bool get isGreenMode => _currentTheme == ThemeType.green;
+  bool get isRedMode => _currentTheme == ThemeType.red;
+  bool get isOrangeMode => _currentTheme == ThemeType.orange;
+  bool get isLightBlueMode => _currentTheme == ThemeType.lightblue;
+  bool get isTheColorMode => _currentTheme == ThemeType.thecolor;
 }

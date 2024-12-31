@@ -26,6 +26,23 @@ class _StylePageState extends State<StylePage> {
           GestureDetector(
             onTap: () {
               Provider.of<StyleProvider>(context, listen: false).setStyle(Style.material);
+              ToastService.showWidgetToast(
+                  context,
+                  isClosable: true,
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                  shadowColor: const Color.fromARGB(255, 117, 117, 117),
+                  length: ToastLength.medium,
+                  expandedHeight: 100,
+                  slideCurve: Curves.elasticInOut,
+                  positionCurve: Curves.bounceOut,
+                  dismissDirection: DismissDirection.none,
+                  child: Container(
+                  	color: Theme.of(context).colorScheme.secondary,
+                  	child: Center(
+                  		child: Text('Please restart the app', style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),),
+                  	),
+                  ),
+                );
             },
             child: Container(
               decoration: BoxDecoration(
@@ -54,6 +71,23 @@ class _StylePageState extends State<StylePage> {
           GestureDetector(
             onTap: () {
               Provider.of<StyleProvider>(context, listen: false).setStyle(Style.standard);
+              ToastService.showWidgetToast(
+                  context,
+                  isClosable: true,
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                  shadowColor: const Color.fromARGB(255, 117, 117, 117),
+                  length: ToastLength.medium,
+                  expandedHeight: 100,
+                  slideCurve: Curves.elasticInOut,
+                  positionCurve: Curves.bounceOut,
+                  dismissDirection: DismissDirection.none,
+                  child: Container(
+                  	color: Theme.of(context).colorScheme.secondary,
+                  	child: Center(
+                  		child: Text('Please restart the app', style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),),
+                  	),
+                  ),
+                );
             },
             child: Container(
               decoration: BoxDecoration(
@@ -82,6 +116,23 @@ class _StylePageState extends State<StylePage> {
           GestureDetector(
             onTap: () {
               Provider.of<StyleProvider>(context, listen: false).setStyle(Style.fluent);
+              ToastService.showWidgetToast(
+                  context,
+                  isClosable: true,
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                  shadowColor: const Color.fromARGB(255, 117, 117, 117),
+                  length: ToastLength.medium,
+                  expandedHeight: 100,
+                  slideCurve: Curves.elasticInOut,
+                  positionCurve: Curves.bounceOut,
+                  dismissDirection: DismissDirection.none,
+                  child: Container(
+                  	color: Theme.of(context).colorScheme.secondary,
+                  	child: Center(
+                  		child: Text('Please restart the app', style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),),
+                  	),
+                  ),
+                );
             },
             child: Container(
               decoration: BoxDecoration(
@@ -110,6 +161,23 @@ class _StylePageState extends State<StylePage> {
           GestureDetector(
             onTap: () {
               Provider.of<StyleProvider>(context, listen: false).setStyle(Style.nothing);
+              ToastService.showWidgetToast(
+                  context,
+                  isClosable: true,
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                  shadowColor: const Color.fromARGB(255, 117, 117, 117),
+                  length: ToastLength.medium,
+                  expandedHeight: 100,
+                  slideCurve: Curves.elasticInOut,
+                  positionCurve: Curves.bounceOut,
+                  dismissDirection: DismissDirection.none,
+                  child: Container(
+                  	color: Theme.of(context).colorScheme.secondary,
+                  	child: Center(
+                  		child: Text('Please restart the app', style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),),
+                  	),
+                  ),
+                );
             },
             child: Container(
               decoration: BoxDecoration(

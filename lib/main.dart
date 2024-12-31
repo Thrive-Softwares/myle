@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myle/design_system_router.dart';
+import 'package:myle/fluent%202/components/app_bar_fluent.dart';
 import 'package:myle/material%203%20design/components/app_bar_material.dart';
 import 'package:myle/standard/components/corner_provider.dart';
 import 'package:myle/standard/components/search_engine_provider.dart';
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
       title: 'Myle',
       debugShowCheckedModeBanner: false,
       theme: Provider.of<ThemeProvider>(context).themeData,
-      home: Provider.of<StyleProvider>(context, listen: false).getStyle(),
+      home: BrowserHomeFluent(), // Provider.of<StyleProvider>(context, listen: false).getStyle(),
     );
   }
 }
