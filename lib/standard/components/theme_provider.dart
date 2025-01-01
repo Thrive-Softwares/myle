@@ -3,8 +3,8 @@ import 'package:myle/standard/components/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 enum ThemeType {
-  light,
   dark,
+  light,
   blue,
   forest,
   cozy,
@@ -18,7 +18,7 @@ enum ThemeType {
 class ThemeProvider extends ChangeNotifier {
   static const String _themeKey = 'selected_theme';
   late SharedPreferences _prefs;
-  ThemeType _currentTheme = ThemeType.light;
+  ThemeType _currentTheme = ThemeType.dark;
 
   Future<void> initialize() async {
     _prefs = await SharedPreferences.getInstance();
@@ -31,10 +31,10 @@ class ThemeProvider extends ChangeNotifier {
   // Get current theme data
   ThemeData get themeData {
     switch (_currentTheme) {
-      case ThemeType.light:
-        return lightMode;
       case ThemeType.dark:
         return darkMode;
+      case ThemeType.light:
+        return lightMode;
       case ThemeType.blue:
         return blue;
       case ThemeType.forest:
@@ -67,10 +67,10 @@ class ThemeProvider extends ChangeNotifier {
   // Cycle through themes
   void cycleTheme() {
     switch (_currentTheme) {
-      case ThemeType.light:
-        _currentTheme = ThemeType.dark;
-        break;
       case ThemeType.dark:
+        _currentTheme = ThemeType.light;
+        break;
+      case ThemeType.light:
         _currentTheme = ThemeType.blue;
         break;
       case ThemeType.blue:
@@ -95,7 +95,7 @@ class ThemeProvider extends ChangeNotifier {
         _currentTheme = ThemeType.thecolor;
         break;
       case ThemeType.thecolor:
-        _currentTheme = ThemeType.light;
+        _currentTheme = ThemeType.dark;
         break;
     }
     notifyListeners();

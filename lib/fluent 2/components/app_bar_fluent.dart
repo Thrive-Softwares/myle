@@ -1,10 +1,13 @@
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:myle/standard/components/browser_tab.dart';
 import 'package:myle/standard/components/corner_provider.dart';
 import 'package:myle/standard/components/search_engine_provider.dart';
 import 'package:myle/fluent 2/pages/settings_page.dart';
 import 'package:myle/fluent 2/pages/start_page.dart';
+import 'package:myle/standard/components/tab_manager.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -19,6 +22,7 @@ class BrowserHomeFluent extends StatefulWidget {
 }
 
 class _BrowserHomeFluentState extends State<BrowserHomeFluent> {
+  static const platform = MethodChannel('com.yourdomain.browser/default_browser');
   SampleItem? selectedItem;
   late WebViewController controller;
   List<BrowserTab> tabs = [];
@@ -32,8 +36,49 @@ class _BrowserHomeFluentState extends State<BrowserHomeFluent> {
   @override
     void initState() {
       super.initState();
-      _createNewTab();
+      controller = WebViewController();
+    _loadSavedTabs();
+    _createNewTab();
+    _setupMethodChannel();
     }
+
+    Future<void> _saveTabs() async {
+  await TabManager.saveTabs(tabs);
+}
+
+    Future<void> _loadSavedTabs() async {
+  final savedTabs = await TabManager.loadTabs();
+  setState(() {
+    if (savedTabs.isEmpty) {
+      _createNewTab();
+    } else {
+      tabs = savedTabs;
+      currentTab = tabs.first;
+    }
+  });
+}
+
+void _setupMethodChannel() {
+    platform.setMethodCallHandler((call) async {
+      if (call.method == 'loadUrl') {
+        final url = call.arguments as String;
+        _handleIncomingUrl(url);
+      }
+      return null;
+    });
+  }
+
+  void _handleIncomingUrl(String url) {
+    setState(() {
+      showHomePage = false;
+      isSearchBarFocused = false;
+    });
+    
+    if (url.isNotEmpty) {
+      urlController.text = url;
+      loadUrl(url);
+    }
+  }
 
   @override
   void dispose() {
@@ -62,6 +107,7 @@ class _BrowserHomeFluentState extends State<BrowserHomeFluent> {
     currentTab = newTab;
     isSearchBarFocused = false; // Reset focus when creating new tab
   });
+  _saveTabs();
 
   // Configure the controller after the tab is created
   newController
@@ -99,6 +145,7 @@ void _closeTab(BrowserTab tab) {
         currentTab = tabs[index > 0 ? index - 1 : 0];
       }
     });
+    _saveTabs();
   }
 }
 
@@ -136,12 +183,15 @@ void _switchTab(BrowserTab tab) {
     if (isValidUrl(url)) {
       final uri = Uri.parse(url.startsWith('http') ? url : 'https://$url');
       currentTab.controller.loadRequest(uri);
+      currentTab.url = uri.toString(); // Add this line
     } else {
       final searchUrl = Provider.of<SearchEngineProvider>(context, listen: false)
-      .getSearchUrl(url);
+          .getSearchUrl(url);
       final uri = Uri.parse(searchUrl);
       currentTab.controller.loadRequest(uri);
+      currentTab.url = uri.toString(); // Add this line
     }
+    _saveTabs(); // Add this line
   }
   setState(() {
     isSearchBarFocused = false;
@@ -177,9 +227,10 @@ void _switchTab(BrowserTab tab) {
             filled: true,
             fillColor: Theme.of(context).colorScheme.tertiary,
             contentPadding: const EdgeInsets.only(top: 10, left: 15),
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),), borderSide: BorderSide.none),
+            disabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Theme.of(context).colorScheme.primary), borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),),
+            enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Theme.of(context).colorScheme.primary), borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),),
             hintText: 'Begin your journey',
-            suffixIcon: Icon(FluentIcons.search),
+            suffixIcon: GestureDetector(child: Icon(FluentSystemIcons.ic_fluent_search_regular, size: 24,), onTap: () => loadUrl(urlController.text),),
           ),
           onSubmitted: loadUrl,
         ),
@@ -196,7 +247,10 @@ void _switchTab(BrowserTab tab) {
       itemCount: tabs.length + 1, // +1 for new tab button
       itemBuilder: (context, index) {
         if (index == tabs.length) {
-          return Icon(FluentIcons.add);
+          return Padding(
+            padding: const EdgeInsets.only(left: 12),
+            child: GestureDetector(child: Icon(FluentSystemIcons.ic_fluent_add_regular, size: 24,), onTap: _createNewTab,),
+          );
         }
 
         final tab = tabs[index];
@@ -209,6 +263,7 @@ void _switchTab(BrowserTab tab) {
               color: tab == currentTab 
                 ? Theme.of(context).colorScheme.tertiary
                 : Theme.of(context).colorScheme.secondary,
+                border: Border.all(color: Theme.of(context).colorScheme.primary),
               borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
             ),
             child: Row(
@@ -229,7 +284,9 @@ void _switchTab(BrowserTab tab) {
                     child: CircularProgressIndicator(strokeWidth: 2),
                   )
                 else
-                  Icon(FluentIcons.chrome_close)
+                SizedBox(width: 12,),
+                  GestureDetector(child: Icon(FluentSystemIcons.ic_fluent_dismiss_regular, size: 18,), onTap:() => _closeTab(tab),),
+                  SizedBox(width: 8,),
               ],
             ),
           ),
@@ -246,10 +303,31 @@ void _switchTab(BrowserTab tab) {
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Icon(FluentIcons.back),
-        Icon(FluentIcons.forward),
-        Icon(FluentIcons.home),
-        Icon(FluentIcons.add),
+        GestureDetector(child: Icon(FluentSystemIcons.ic_fluent_arrow_left_regular, size: 24,), onTap: () {
+            currentTab.controller.goBack();
+            setState(() {
+              isSearchBarFocused = false; // Reset focus when going back
+            });
+            FocusScope.of(context).unfocus(); // Actively unfocus
+          },),
+
+        GestureDetector(child: Icon(FluentSystemIcons.ic_fluent_arrow_right_regular, size: 24,), onTap: () {
+            currentTab.controller.goForward();
+            setState(() {
+              isSearchBarFocused = false; // Reset focus when going forward
+            });
+            FocusScope.of(context).unfocus(); // Actively unfocus
+          },),
+
+        GestureDetector(child: Icon(FluentSystemIcons.ic_fluent_home_regular, size: 24,), onTap: () {
+            setState(() {
+              showHomePage = true;
+              isSearchBarFocused = false; // Reset focus when going home
+            });
+            FocusScope.of(context).unfocus(); // Actively unfocus
+          },),
+
+        GestureDetector(child: Icon(FluentSystemIcons.ic_fluent_add_regular, size: 24,), onTap: () => _createNewTab(),),
         _buildMenuButton(),
       ],
     ),
@@ -269,22 +347,22 @@ void _switchTab(BrowserTab tab) {
       itemBuilder: (BuildContext context) => <PopupMenuEntry<SampleItem>>[
         PopupMenuItem<SampleItem>(
           value: SampleItem.itemOne,
-          child: const Row(
+          child: Row(
             children: [
-              Icon(Icons.refresh_rounded),
+              Icon(FluentSystemIcons.ic_fluent_arrow_clockwise_regular, size: 24),
               SizedBox(width: 10),
               Text('Refresh'),
             ],
           ),
           onTap: () {
-            controller.reload();
+            currentTab.controller.reload();
           },
         ),
         PopupMenuItem<SampleItem>(
           value: SampleItem.itemTwo,
-          child: const Row(
+          child: Row(
             children: [
-              Icon(Icons.settings_rounded),
+              Icon(FluentSystemIcons.ic_fluent_settings_regular, size: 24),
               SizedBox(width: 10),
               Text('Settings'),
             ],
@@ -295,9 +373,9 @@ void _switchTab(BrowserTab tab) {
         ),
         PopupMenuItem<SampleItem>(
           value: SampleItem.itemThree,
-          child: const Row(
+          child: Row(
             children: [
-              Icon(Icons.share_rounded),
+              Icon(FluentSystemIcons.ic_fluent_share_ios_regular, size: 24),
               SizedBox(width: 10),
               Text('Share'),
             ],

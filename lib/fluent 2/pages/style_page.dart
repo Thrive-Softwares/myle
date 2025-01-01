@@ -1,3 +1,4 @@
+import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:myle/design_system_router.dart';
@@ -46,6 +47,7 @@ class _StylePageState extends State<StylePage> {
             },
             child: Container(
               decoration: BoxDecoration(
+                border: Border.all(color: Theme.of(context).colorScheme.tertiary),
                     color: Theme.of(context).colorScheme.secondary,
                     borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
@@ -60,7 +62,7 @@ class _StylePageState extends State<StylePage> {
                       color: Theme.of(context).colorScheme.inversePrimary
                     ),
                     ),
-                  Icon(Iconsax.designtools, color: Theme.of(context).colorScheme.inversePrimary,),
+                  Icon(FluentSystemIcons.ic_fluent_style_guide_regular, color: Theme.of(context).colorScheme.inversePrimary,),
                 ],
               ),
             ),
@@ -91,6 +93,7 @@ class _StylePageState extends State<StylePage> {
             },
             child: Container(
               decoration: BoxDecoration(
+                border: Border.all(color: Theme.of(context).colorScheme.tertiary),
                     color: Theme.of(context).colorScheme.secondary,
                     borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
@@ -105,7 +108,7 @@ class _StylePageState extends State<StylePage> {
                       color: Theme.of(context).colorScheme.inversePrimary
                     ),
                     ),
-                  Icon(Iconsax.designtools, color: Theme.of(context).colorScheme.inversePrimary,),
+                  Icon(FluentSystemIcons.ic_fluent_style_guide_regular, color: Theme.of(context).colorScheme.inversePrimary,),
                 ],
               ),
             ),
@@ -136,6 +139,7 @@ class _StylePageState extends State<StylePage> {
             },
             child: Container(
               decoration: BoxDecoration(
+                border: Border.all(color: Theme.of(context).colorScheme.tertiary),
                     color: Theme.of(context).colorScheme.secondary,
                     borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
@@ -150,7 +154,7 @@ class _StylePageState extends State<StylePage> {
                       color: Theme.of(context).colorScheme.inversePrimary
                     ),
                     ),
-                  Icon(Iconsax.designtools, color: Theme.of(context).colorScheme.inversePrimary,),
+                  Icon(FluentSystemIcons.ic_fluent_style_guide_regular, color: Theme.of(context).colorScheme.inversePrimary,),
                 ],
               ),
             ),
@@ -181,6 +185,7 @@ class _StylePageState extends State<StylePage> {
             },
             child: Container(
               decoration: BoxDecoration(
+                border: Border.all(color: Theme.of(context).colorScheme.tertiary),
                     color: Theme.of(context).colorScheme.secondary,
                     borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
@@ -195,7 +200,7 @@ class _StylePageState extends State<StylePage> {
                       color: Theme.of(context).colorScheme.inversePrimary
                     ),
                     ),
-                  Icon(Iconsax.designtools, color: Theme.of(context).colorScheme.inversePrimary,),
+                  Icon(FluentSystemIcons.ic_fluent_style_guide_regular, color: Theme.of(context).colorScheme.inversePrimary,),
                 ],
               ),
             ),
@@ -225,6 +230,7 @@ class _StylePageState extends State<StylePage> {
             },
             child: Container(
               decoration: BoxDecoration(
+                border: Border.all(color: Theme.of(context).colorScheme.tertiary),
                     color: Theme.of(context).colorScheme.secondary,
                     borderRadius: BorderRadius.circular(Provider.of<CornerProvider>(context, listen: false).getCornerRadius(),),
                   ),
@@ -239,7 +245,7 @@ class _StylePageState extends State<StylePage> {
                       color: Theme.of(context).colorScheme.inversePrimary
                     ),
                     ),
-                  Icon(Iconsax.designtools, color: Theme.of(context).colorScheme.inversePrimary,),
+                  Icon(FluentSystemIcons.ic_fluent_style_guide_regular, color: Theme.of(context).colorScheme.inversePrimary,),
                 ],
               ),
             ),

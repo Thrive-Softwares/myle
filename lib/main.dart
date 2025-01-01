@@ -6,6 +6,7 @@ import 'package:myle/standard/components/corner_provider.dart';
 import 'package:myle/standard/components/search_engine_provider.dart';
 import 'package:myle/standard/components/theme_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
       title: 'Myle',
       debugShowCheckedModeBanner: false,
       theme: Provider.of<ThemeProvider>(context).themeData,
-      home: BrowserHomeFluent(), // Provider.of<StyleProvider>(context, listen: false).getStyle(),
+      home: Provider.of<StyleProvider>(context, listen: false).getStyle(),
     );
   }
 }

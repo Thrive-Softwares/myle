@@ -1,4 +1,4 @@
-import 'package:fluent_ui/fluent_ui.dart';
+import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:myle/standard/components/search_engine_provider.dart';
 import 'package:provider/provider.dart';
@@ -26,25 +26,25 @@ class HomePage extends StatelessWidget {
             alignment: WrapAlignment.center,
             children: [
               _QuickAccessButton(
-                icon: FluentIcons.search,
+                icon: FluentSystemIcons.ic_fluent_search_regular,
                 label: 'Search',
                 url: Provider.of<SearchEngineProvider>(context, listen: false).getSearchUrlStart(),
                 onTap: onUrlSelected,
               ),
               _QuickAccessButton(
-                icon: FluentIcons.news,
+                icon: FluentSystemIcons.ic_fluent_news_regular,
                 label: 'Tech news',
                 url: 'https://www.theverge.com/',
                 onTap: onUrlSelected,
               ),
               _QuickAccessButton(
-                icon: FluentIcons.mail,
+                icon: FluentSystemIcons.ic_fluent_mail_regular,
                 label: 'Gmail',
                 url: 'https://mail.google.com',
                 onTap: onUrlSelected,
               ),
               _QuickAccessButton(
-                icon: FluentIcons.play,
+                icon: FluentSystemIcons.ic_fluent_play_circle_regular,
                 label: 'YouTube',
                 url: 'https://www.youtube.com',
                 onTap: onUrlSelected,
