@@ -1,5 +1,6 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:myle/fluent%202/pages/style_page.dart';
 import 'package:myle/standard/components/corner_provider.dart';
 import 'package:myle/fluent 2/pages/corner_radius_page.dart';
@@ -20,6 +21,7 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  static const platform = MethodChannel('com.yourdomain.browser/default_browser');
 
   Future<void> _launchUrlRepo() async {
   if (!await launchUrl(_urlRepo)) {
@@ -32,6 +34,21 @@ Future<void> _launchUrlKofi() async {
     throw Exception('Could not launch $_urlKofi');
   }
 }
+
+Future<void> _setDefaultBrowser() async {
+    try {
+      final bool result = await platform.invokeMethod('setDefaultBrowser');
+      if (result) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Successfully set as default browser')),
+        );
+      }
+    } on PlatformException catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to set as default browser: ${e.message}')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -229,7 +246,7 @@ Future<void> _launchUrlKofi() async {
 
           GestureDetector(
             onTap: () {
-              
+              _setDefaultBrowser();
             },
             child: Container(
               decoration: BoxDecoration(

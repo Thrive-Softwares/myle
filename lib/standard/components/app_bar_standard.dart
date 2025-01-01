@@ -4,6 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:myle/standard/components/browser_tab.dart';
 import 'package:myle/standard/components/corner_provider.dart';
 import 'package:myle/standard/components/search_engine_provider.dart';
+import 'package:myle/standard/components/tab_manager.dart';
 import 'package:myle/standard/pages/settings_page.dart';
 import 'package:myle/standard/pages/start_page.dart';
 import 'package:provider/provider.dart';
@@ -34,9 +35,27 @@ class _BrowserHomeStandardState extends State<BrowserHomeStandard> {
   @override
   void initState() {
     super.initState();
+    controller = WebViewController();
+    _loadSavedTabs();
     _createNewTab();
     _setupMethodChannel();
   }
+
+  Future<void> _loadSavedTabs() async {
+  final savedTabs = await TabManager.loadTabs();
+  setState(() {
+    if (savedTabs.isEmpty) {
+      _createNewTab();
+    } else {
+      tabs = savedTabs;
+      currentTab = tabs.first;
+    }
+  });
+}
+
+Future<void> _saveTabs() async {
+  await TabManager.saveTabs(tabs);
+}
 
   void _setupMethodChannel() {
     platform.setMethodCallHandler((call) async {
@@ -87,6 +106,7 @@ class _BrowserHomeStandardState extends State<BrowserHomeStandard> {
     currentTab = newTab;
     isSearchBarFocused = false; // Reset focus when creating new tab
   });
+  _saveTabs();
 
   // Configure the controller after the tab is created
   newController
@@ -124,6 +144,7 @@ void _closeTab(BrowserTab tab) {
         currentTab = tabs[index > 0 ? index - 1 : 0];
       }
     });
+    _saveTabs();
   }
 }
 
@@ -161,12 +182,15 @@ void _switchTab(BrowserTab tab) {
     if (isValidUrl(url)) {
       final uri = Uri.parse(url.startsWith('http') ? url : 'https://$url');
       currentTab.controller.loadRequest(uri);
+      currentTab.url = uri.toString(); // Add this line
     } else {
       final searchUrl = Provider.of<SearchEngineProvider>(context, listen: false)
-      .getSearchUrl(url);
+          .getSearchUrl(url);
       final uri = Uri.parse(searchUrl);
       currentTab.controller.loadRequest(uri);
+      currentTab.url = uri.toString(); // Add this line
     }
+    _saveTabs(); // Add this line
   }
   setState(() {
     isSearchBarFocused = false;
@@ -341,7 +365,7 @@ void _switchTab(BrowserTab tab) {
             ],
           ),
           onTap: () {
-            controller.reload();
+            currentTab.controller.reload();
           },
         ),
         PopupMenuItem<SampleItem>(

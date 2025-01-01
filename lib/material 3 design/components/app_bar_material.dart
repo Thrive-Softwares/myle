@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:myle/standard/components/browser_tab.dart';
 import 'package:myle/standard/components/corner_provider.dart';
 import 'package:myle/standard/components/search_engine_provider.dart';
 import 'package:myle/material 3 design/pages/settings_page.dart';
 import 'package:myle/material 3 design/pages/start_page.dart';
+import 'package:myle/standard/components/tab_manager.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -18,6 +20,7 @@ class BrowserHomeMaterial extends StatefulWidget {
 }
 
 class _BrowserHomeMaterialState extends State<BrowserHomeMaterial> {
+  static const platform = MethodChannel('com.yourdomain.browser/default_browser');
   SampleItem? selectedItem;
   late WebViewController controller;
   List<BrowserTab> tabs = [];
@@ -31,8 +34,49 @@ class _BrowserHomeMaterialState extends State<BrowserHomeMaterial> {
   @override
     void initState() {
       super.initState();
-      _createNewTab();
+      controller = WebViewController();
+    _loadSavedTabs();
+    _createNewTab();
+    _setupMethodChannel();
     }
+
+    Future<void> _saveTabs() async {
+  await TabManager.saveTabs(tabs);
+}
+
+    Future<void> _loadSavedTabs() async {
+  final savedTabs = await TabManager.loadTabs();
+  setState(() {
+    if (savedTabs.isEmpty) {
+      _createNewTab();
+    } else {
+      tabs = savedTabs;
+      currentTab = tabs.first;
+    }
+  });
+}
+
+void _setupMethodChannel() {
+    platform.setMethodCallHandler((call) async {
+      if (call.method == 'loadUrl') {
+        final url = call.arguments as String;
+        _handleIncomingUrl(url);
+      }
+      return null;
+    });
+  }
+
+  void _handleIncomingUrl(String url) {
+    setState(() {
+      showHomePage = false;
+      isSearchBarFocused = false;
+    });
+    
+    if (url.isNotEmpty) {
+      urlController.text = url;
+      loadUrl(url);
+    }
+  }
 
   @override
   void dispose() {
@@ -61,6 +105,7 @@ class _BrowserHomeMaterialState extends State<BrowserHomeMaterial> {
     currentTab = newTab;
     isSearchBarFocused = false; // Reset focus when creating new tab
   });
+  _saveTabs();
 
   // Configure the controller after the tab is created
   newController
@@ -98,6 +143,7 @@ void _closeTab(BrowserTab tab) {
         currentTab = tabs[index > 0 ? index - 1 : 0];
       }
     });
+    _saveTabs();
   }
 }
 
@@ -135,12 +181,15 @@ void _switchTab(BrowserTab tab) {
     if (isValidUrl(url)) {
       final uri = Uri.parse(url.startsWith('http') ? url : 'https://$url');
       currentTab.controller.loadRequest(uri);
+      currentTab.url = uri.toString(); // Add this line
     } else {
       final searchUrl = Provider.of<SearchEngineProvider>(context, listen: false)
-      .getSearchUrl(url);
+          .getSearchUrl(url);
       final uri = Uri.parse(searchUrl);
       currentTab.controller.loadRequest(uri);
+      currentTab.url = uri.toString(); // Add this line
     }
+    _saveTabs(); // Add this line
   }
   setState(() {
     isSearchBarFocused = false;
@@ -315,7 +364,7 @@ void _switchTab(BrowserTab tab) {
             ],
           ),
           onTap: () {
-            controller.reload();
+            currentTab.controller.reload();
           },
         ),
         PopupMenuItem<SampleItem>(
