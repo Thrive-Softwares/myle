@@ -182,15 +182,15 @@ void _switchTab(BrowserTab tab) {
     if (isValidUrl(url)) {
       final uri = Uri.parse(url.startsWith('http') ? url : 'https://$url');
       currentTab.controller.loadRequest(uri);
-      currentTab.url = uri.toString(); // Add this line
+      currentTab.url = uri.toString();
     } else {
       final searchUrl = Provider.of<SearchEngineProvider>(context, listen: false)
           .getSearchUrl(url);
       final uri = Uri.parse(searchUrl);
       currentTab.controller.loadRequest(uri);
-      currentTab.url = uri.toString(); // Add this line
+      currentTab.url = uri.toString();
     }
-    _saveTabs(); // Add this line
+    _saveTabs();
   }
   setState(() {
     isSearchBarFocused = false;

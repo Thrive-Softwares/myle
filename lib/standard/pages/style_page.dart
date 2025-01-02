@@ -160,7 +160,6 @@ class _StylePageState extends State<StylePage> {
 
           GestureDetector(
             onTap: () {
-              Provider.of<StyleProvider>(context, listen: false).setStyle(Style.nothing);
               ToastService.showWidgetToast(
                   context,
                   isClosable: true,
@@ -174,7 +173,7 @@ class _StylePageState extends State<StylePage> {
                   child: Container(
                   	color: Theme.of(context).colorScheme.secondary,
                   	child: Center(
-                  		child: Text('Please restart the app', style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),),
+                  		child: Text('Coming Soon!', style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),),
                   	),
                   ),
                 );
@@ -190,7 +189,7 @@ class _StylePageState extends State<StylePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Nothing",
+                    "Nothing | Coming soon",
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.inversePrimary
                     ),
