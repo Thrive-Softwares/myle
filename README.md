@@ -2,7 +2,7 @@
 
 ![Image](https://framerusercontent.com/images/Eacw9oeFmBymRaMuwJVmFbnapn4.png)
 
-Myle is a Browser that has many customization options. Coming Soon!
+Myle is a Browser that has many customization options. You can sign up for the Early access program [here](https://tinted-seaplane-cb4.notion.site/16c93fc8858b802091ebf28ad51c3221?pvs=105)
 
 ## Features✨
 
