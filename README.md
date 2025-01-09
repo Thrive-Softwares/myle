@@ -11,6 +11,7 @@ Myle is a Browser that has many customization options. You can sign up for the E
 - Change the corner radius to rounded (12px), round (99px) and rectangular (0px)
 - Change the search engine including Qwant, Google, Brave, duckduckgo, yahoo, Bing and ecosia
 - Change the Style including Material 3 Design, Nothing and Fluent 2
+- Change the Color Mode
 
 ## Coming Soon!!!
 
